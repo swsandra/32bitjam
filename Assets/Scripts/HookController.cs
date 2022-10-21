@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HookController : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField]
     float horizontalSpeed = 10f;
     [SerializeField]
