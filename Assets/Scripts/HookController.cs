@@ -5,23 +5,27 @@ using UnityEngine;
 public class HookController : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField]
-    float horizontalSpeed = 10f;
-    [SerializeField]
-    float verticalSpeed = 10f;
-    [SerializeField]
+    [SerializeField] float horizontalSpeed = 10f;
+    [SerializeField] float verticalSpeed = 10f;
+
+    [Header("Vertical Bounds")]
+    [SerializeField] Transform seaTop;
+    [SerializeField] Transform seaBottom;
     Camera cam;
-    [SerializeField]
-    Transform seaTop, seaBottom;
-    Vector3 screenBounds;
-    float hookWidth, hookHeight, hookTranslation, camTranslation, camXOffset;
+    float leftLimit;
+    float rightLimit;
+    float hookWidth, hookHeight;
+    float hookTranslation, camTranslation;
 
     private void Start() {
-        screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
-        camXOffset = cam.transform.position.x;
+        cam = Camera.main;
+        Vector3 screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
+        float camXOffset = cam.transform.position.x;
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         hookWidth = renderer.bounds.size.x;
         hookHeight = renderer.bounds.size.y;
+        leftLimit = screenBounds.x+hookWidth;
+        rightLimit = (screenBounds.x*-1)+(camXOffset*2)-hookWidth;
     }
 
     void Update()
@@ -37,7 +41,7 @@ public class HookController : MonoBehaviour
 
         // Hook movement bounds
         transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, screenBounds.x+hookWidth, (screenBounds.x*-1)+(camXOffset*2)-hookWidth),
+            Mathf.Clamp(transform.position.x, leftLimit, rightLimit),
             transform.position.y,
             transform.position.z);
 
