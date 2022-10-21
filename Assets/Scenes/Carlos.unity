@@ -322,7 +322,7 @@ MonoBehaviour:
   rotationSpeed: 1
   maxRotationTilt: 30
   buoyancySpeed: 1
-  maxBuoyancy: 1
+  maxBuoyancy: 2
 --- !u!1 &1892174959
 GameObject:
   m_ObjectHideFlags: 0
