@@ -47,4 +47,12 @@ public class HookController : MonoBehaviour
             Mathf.Clamp(cam.transform.position.y, seaBottom.position.y+(hookHeight*2), seaTop.position.y-hookHeight),
             cam.transform.position.z);
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Fish")){
+            Debug.Log("choco contra un pez");
+        }else if (other.CompareTag("Treasure")){
+            Debug.Log("toco el tesoro");
+        }
+    }
 }
