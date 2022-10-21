@@ -13,8 +13,6 @@ public class PlayerController : MonoBehaviour
     [Header("Buoyancy")]
     [SerializeField] float buoyancySpeed;
     [SerializeField] float maxBuoyancy;
-    float buoyancyDirection = 1;
-    static float t = 0f;
     
     Rigidbody rb;
     float speed;
@@ -59,13 +57,8 @@ public class PlayerController : MonoBehaviour
         speed = Mathf.Clamp(speed + movementVertical, 0, maxSpeed);
         rb.velocity = transform.forward * speed;
 
-        // Boat Buoyancy
-        float buoyancyMovement = Mathf.Lerp(-maxBuoyancy, maxBuoyancy, t) * buoyancyDirection;
-        t += buoyancySpeed * Time.fixedDeltaTime;
-        if (t > 1.0f) {
-            buoyancyDirection *= -1;
-            t = 0f;
-        }
+        // Buoyancy
+        float buoyancyMovement = Mathf.PingPong(Time.time * buoyancySpeed, maxBuoyancy) - (maxBuoyancy/2);
 
         transform.position = new Vector3(transform.position.x, buoyancyMovement, transform.position.z);
     }
