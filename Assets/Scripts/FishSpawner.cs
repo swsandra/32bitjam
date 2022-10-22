@@ -6,6 +6,12 @@ public class FishSpawner : MonoBehaviour
 {
     [SerializeField] float spawnRate = 0.5357f;
     [SerializeField] GameObject[] fishPrefabs;
+
+    [Header("Fish Settings")]
+    [SerializeField] float minRotationSpeed = 20f;
+    [SerializeField] float maxRotationSpeed = 30f;
+    [SerializeField] float minRotation = 30f;
+    [SerializeField] float maxRotation = 45f;
     [SerializeField] float fishSpeed = 1;
 
     Transform[] spawnPositions;
@@ -29,8 +35,7 @@ public class FishSpawner : MonoBehaviour
                     child.eulerAngles = new Vector3(child.eulerAngles.x, child.eulerAngles.y+180, child.eulerAngles.z);
                 }
             }
-            fish.GetComponent<FishController>().direction = direction;
-            fish.GetComponent<FishController>().speed = fishSpeed;
+            fish.GetComponent<FishController>().UpdateSettings(direction, fishSpeed, Random.Range(minRotationSpeed, maxRotationSpeed), Random.Range(minRotation, maxRotation));
         }
     }
 

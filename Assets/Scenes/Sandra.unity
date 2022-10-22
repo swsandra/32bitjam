@@ -914,6 +914,10 @@ MonoBehaviour:
   - {fileID: 521331437005677256, guid: cc322d8e0f6136b46b455fbccc489fb0, type: 3}
   - {fileID: 7207297697264581164, guid: 92b56b2d6a539aa4abb97f983285b697, type: 3}
   - {fileID: 1696569049950107204, guid: e960808e15468274ea76b8698d40a061, type: 3}
+  minRotationSpeed: 20
+  maxRotationSpeed: 40
+  minRotation: 30
+  maxRotation: 45
   fishSpeed: 10
 --- !u!1 &1680916458
 GameObject:
@@ -31257,7 +31261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3292345258145609785, guid: bac89028bc83a8149aa7c20d724ed929, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3292345258145609785, guid: bac89028bc83a8149aa7c20d724ed929, type: 3}
       propertyPath: m_LocalRotation.x
@@ -31265,15 +31269,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3292345258145609785, guid: bac89028bc83a8149aa7c20d724ed929, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3292345258145609785, guid: bac89028bc83a8149aa7c20d724ed929, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3292345258145609785, guid: bac89028bc83a8149aa7c20d724ed929, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3292345258145609785, guid: bac89028bc83a8149aa7c20d724ed929, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

@@ -5,8 +5,8 @@ using UnityEngine;
 public class FishController : MonoBehaviour
 {
     [Header("Movement")]
-    public int direction; // Either 1 (right), or -1 (left)
-    public float speed;
+    [SerializeField] int direction; // Either 1 (right), or -1 (left)
+    [SerializeField] float speed;
 
     [Header("Rotation")]
     [SerializeField] float rotationSpeed = 30f;
@@ -40,5 +40,12 @@ public class FishController : MonoBehaviour
     private void FixedUpdate() {
         float t = Mathf.PingPong(Time.time  * rotationSpeed, maxRotation);
         transform.eulerAngles = new Vector3(0, t, 0);
+    }
+
+    public void UpdateSettings(int direction, float speed, float rotationSpeed, float maxRotation){
+        this.direction = direction;
+        this.speed = speed;
+        this.rotationSpeed = rotationSpeed;
+        this.maxRotation = maxRotation;
     }
 }
