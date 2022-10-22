@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [Header("Buoyancy")]
     [SerializeField] float buoyancySpeed;
     [SerializeField] float maxBuoyancy;
+    float startingY;
     
     Rigidbody rb;
     float speed;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startingY = transform.position.y;
     }
 
     // Update is called once per frame
@@ -60,6 +62,6 @@ public class PlayerController : MonoBehaviour
         // Buoyancy
         float buoyancyMovement = Mathf.PingPong(Time.time * buoyancySpeed, maxBuoyancy) - (maxBuoyancy/2);
 
-        transform.position = new Vector3(transform.position.x, buoyancyMovement, transform.position.z);
+        transform.position = new Vector3(transform.position.x, startingY + buoyancyMovement, transform.position.z);
     }
 }
