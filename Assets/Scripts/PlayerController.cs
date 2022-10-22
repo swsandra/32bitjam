@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxSpeed;
     [Header("Rotation")]
     [SerializeField] float rotationSpeed;
+    [SerializeField] float tiltSpeed;
     [SerializeField] float maxRotationTilt;
     [Header("Buoyancy")]
     [SerializeField] float buoyancySpeed;
+    [SerializeField] float buoyancyRotationSpeed;
     [SerializeField] float maxBuoyancy;
+    [SerializeField] float maxBuoyancyRotation;
     float startingY;
     
     Rigidbody rb;
@@ -30,19 +33,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Vertical") > 0) {
-            // Acelera hacia adelante
-        }
-        else if (Input.GetAxis("Vertical") < 0) {
-            // frena (va hacia atras?)
-        }
-        if (Input.GetAxis("Horizontal") > 0) {
-            // rota hacia la derecha
-        }
-        else if (Input.GetAxis("Horizontal") < 0) {
-            // rota hacia la izquierda
-        }
-
         movementVertical = Input.GetAxis("Vertical");
         movementHorizontal = Input.GetAxis("Horizontal");
     }
@@ -50,10 +40,24 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         // Boat rotation
         float rotation = rotationSpeed*movementHorizontal;
-        rb.rotation *= Quaternion.AngleAxis(rotation, Vector3.up);
+        transform.Rotate(new Vector3(0,rotation,0),Space.World);
 
         // Rotation tilt
-        //rb.MoveRotation(Quaternion.Euler(0, 0, movementHorizontal*maxRotationTilt));
+        float tilt = tiltSpeed*movementHorizontal;
+        float angle = transform.localEulerAngles.z;
+        angle = (angle > 180) ? angle - 360 : angle;
+
+        if(Mathf.Abs(angle) <= maxRotationTilt){
+            transform.Rotate(new Vector3(0,0,-tilt), Space.Self);
+        }
+
+        if (tilt == 0) {
+            transform.eulerAngles = Vector3.Lerp(
+                new Vector3(transform.eulerAngles.x,transform.eulerAngles.y, angle),
+                new Vector3(transform.eulerAngles.x,transform.eulerAngles.y,0),
+                Time.deltaTime * tiltSpeed
+            );
+        }
 
         // Boat movement
         speed = Mathf.Clamp(speed + movementVertical, 0, maxSpeed);
@@ -61,7 +65,12 @@ public class PlayerController : MonoBehaviour
 
         // Buoyancy
         float buoyancyMovement = Mathf.PingPong(Time.time * buoyancySpeed, maxBuoyancy) - (maxBuoyancy/2);
+        float buoyancyRotation = Mathf.PingPong(Time.time * buoyancyRotationSpeed, maxBuoyancyRotation) - (maxBuoyancyRotation/2);
 
         transform.position = new Vector3(transform.position.x, startingY + buoyancyMovement, transform.position.z);
+
+        angle = transform.localEulerAngles.z;
+        angle = (angle > 180) ? angle - 360 : angle;
+        transform.eulerAngles = new Vector3(buoyancyRotation,transform.eulerAngles.y,Mathf.Clamp(angle,-maxRotationTilt,maxRotationTilt));
     }
 }
