@@ -12,16 +12,19 @@ public class HookController : MonoBehaviour
     [SerializeField] Transform seaTop;
     [SerializeField] Transform seaBottom;
     [SerializeField] GameObject treasure;
+    [Header("Treasure")]
+    public bool hasTreasure;
     Camera cam;
-    float leftLimit, rightLimit, topLimit, bottomLimit;
+    float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
     float hookWidth, hookHeight;
     float hookTranslation;
     float camDirection;
     float initialVerticalSpeed;
-    bool startAnimation;
+    bool startAnimation, endAnimation;
 
     private void Start() {
         startAnimation = true;
+        hasTreasure = false;
         cam = Camera.main;
         camDirection = -1;
         // Calculate screen limits
@@ -38,7 +41,8 @@ public class HookController : MonoBehaviour
         // Start camera on sea top
         cam.transform.position = new Vector3(cam.transform.position.x, topLimit, cam.transform.position.z);
         // Start hook above camara
-        transform.position = new Vector3(transform.position.x, topLimit+(hookHeight*2), transform.position.z);
+        hookAboveCamLimit = topLimit+(hookHeight*2);
+        transform.position = new Vector3(transform.position.x, hookAboveCamLimit, transform.position.z);
     }
 
     void Update()
@@ -48,6 +52,17 @@ public class HookController : MonoBehaviour
             hookMovement = Vector3.down * (verticalSpeed/2) * Time.deltaTime;
             transform.position += hookMovement;
             if (transform.localPosition.y <= 0) startAnimation = false; // Referent to camera
+            return;
+        }
+
+        if (endAnimation){ // Start animation
+            hookMovement = Vector3.up * (verticalSpeed/2) * Time.deltaTime;
+            transform.position += hookMovement;
+            if (transform.position.y >= hookAboveCamLimit) {
+                // endAnimation = false;
+                Debug.Log("salio el tesoro");
+                // TODO: salir
+            }
             return;
         }
 
@@ -73,14 +88,22 @@ public class HookController : MonoBehaviour
             cam.transform.position.x,
             Mathf.Clamp(cam.transform.position.y, bottomLimit, topLimit),
             cam.transform.position.z);
+
+        if (cam.transform.position.y == topLimit && hasTreasure){
+            endAnimation = true;
+            Debug.Log("Gano");
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (endAnimation) return;
         if (other.CompareTag("Fish")){
             Debug.Log("choco contra un pez");
-        }else if (other.CompareTag("Treasure")){
-            Debug.Log("toco el tesoro");
+        }else if (other.CompareTag("Treasure") && !hasTreasure){ // Grab treasure
+            hasTreasure = true;
             camDirection = 1;
+            other.transform.SetParent(transform);
+            other.transform.localPosition = new Vector3(0, other.transform.localPosition.y, other.transform.localPosition.z);
         }
     }
 }

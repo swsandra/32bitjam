@@ -439,7 +439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733428093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 4.5, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -591,6 +591,7 @@ MonoBehaviour:
   seaTop: {fileID: 287148915}
   seaBottom: {fileID: 1080825919}
   treasure: {fileID: 733428093}
+  hasTreasure: 0
 --- !u!1 &1080825915
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +908,7 @@ Transform:
   - {fileID: 1680916459}
   - {fileID: 2147008659}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1496444762
 MonoBehaviour:
@@ -36723,7 +36724,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1804979588274580304, guid: 82b2646e9f606b84fb3081636c8306a5, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1804979588274580304, guid: 82b2646e9f606b84fb3081636c8306a5, type: 3}
       propertyPath: m_LocalScale.x
