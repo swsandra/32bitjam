@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fish
   - Treasure
+  - Rock
   layers:
   - Default
   - TransparentFX
