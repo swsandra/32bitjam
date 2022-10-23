@@ -9,6 +9,7 @@ public class Compass : MonoBehaviour
     GameObject[] treasures;
     public Transform dummy;
     public Transform player;
+    public Vector3 rotate;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class Compass : MonoBehaviour
         var nearestTreasure = treasures.OrderBy(t=> Vector3.Distance(player.position, t.transform.position)).FirstOrDefault();
         dummy.position = nearestTreasure.transform.position - player.position + transform.position;
         transform.LookAt(dummy.position);
-        transform.eulerAngles += new Vector3(-90,0,180);
+        transform.eulerAngles += rotate;
         Debug.DrawLine(transform.position, dummy.position);
     }
 }
