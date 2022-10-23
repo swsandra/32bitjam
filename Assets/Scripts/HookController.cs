@@ -12,10 +12,11 @@ public class HookController : MonoBehaviour
     [SerializeField] Transform seaTop;
     [SerializeField] Transform seaBottom;
     [SerializeField] GameObject treasure;
-    [Header("Other")]
-    public bool hasTreasure;
+
+    [Header("Time intervals")]
     [SerializeField] float invulnerableSeconds = 1.5f;
     [SerializeField] float dropTreasureSeconds = 1f;
+    [SerializeField] float moveUpSeconds = 1f;
     [SerializeField] float blinkRate = .1f;
     Camera cam;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
@@ -25,6 +26,7 @@ public class HookController : MonoBehaviour
     float initialVerticalSpeed;
     bool startAnimation, endAnimation;
     bool invulnerable;
+    bool hasTreasure;
     bool treasureDropped;
 
     private void Start() {
@@ -98,7 +100,7 @@ public class HookController : MonoBehaviour
 
         if (cam.transform.position.y == topLimit && hasTreasure){
             endAnimation = true;
-            Debug.Log("Gano");
+            // Debug.Log("Gano");
         }
     }
 
@@ -108,7 +110,7 @@ public class HookController : MonoBehaviour
             if (hasTreasure){
                 DropTreasure();
             }else{
-                Debug.Log("subir");
+                StartCoroutine(MoveUpCoroutine());
                 StartCoroutine(MakeInvulnerable());
                 StartCoroutine(Blink());
             }
@@ -126,10 +128,10 @@ public class HookController : MonoBehaviour
 
     IEnumerator MakeInvulnerable() {
         invulnerable = true;
-        Debug.Log("invulnerable");
+        // Debug.Log("invulnerable");
         yield return new WaitForSeconds(invulnerableSeconds);
         invulnerable = false;
-        Debug.Log("ya no es invulnerable");
+        // Debug.Log("ya no es invulnerable");
     }
 
     public void DropTreasure(){
@@ -146,10 +148,10 @@ public class HookController : MonoBehaviour
 
     IEnumerator DropTreasureCoroutine() {
         treasureDropped = true;
-        Debug.Log("boto el tesoro");
+        // Debug.Log("boto el tesoro");
         yield return new WaitForSeconds(dropTreasureSeconds);
         treasureDropped = false;
-        Debug.Log("ya lo puede recoger");
+        // Debug.Log("ya lo puede recoger");
     }
 
     IEnumerator Blink(){
@@ -171,5 +173,13 @@ public class HookController : MonoBehaviour
     void enableAllRenderers(MeshRenderer[] renderers){
         foreach (MeshRenderer meshRenderer in renderers)
             meshRenderer.enabled = true;
+    }
+
+    IEnumerator MoveUpCoroutine(){
+        verticalSpeed *= 2;
+        camDirection = 1;
+        yield return new WaitForSeconds(moveUpSeconds);
+        verticalSpeed = initialVerticalSpeed;
+        camDirection = -1;
     }
 }

@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 37.5
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
       propertyPath: m_LocalPosition.z
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook: {fileID: 870716468}
-  verticalSpeed: 5
+  verticalSpeed: 7
   isGrounded: 0
   isHooked: 0
 --- !u!1 &870716468
@@ -665,9 +665,9 @@ MonoBehaviour:
   seaTop: {fileID: 287148915}
   seaBottom: {fileID: 1080825919}
   treasure: {fileID: 733428093}
-  hasTreasure: 0
   invulnerableSeconds: 2
   dropTreasureSeconds: 1
+  moveUpSeconds: 1
   blinkRate: 0.1
 --- !u!1 &1080825915
 GameObject:
