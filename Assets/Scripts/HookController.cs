@@ -106,21 +106,21 @@ public class HookController : MonoBehaviour
         if (endAnimation) return;
         if (other.CompareTag("Fish") && !invulnerable){
             if (hasTreasure){
-                treasure.transform.SetParent(null);
-                hasTreasure = false;
-                StartCoroutine(DropTreasure());
-                camDirection = -1;
+                DropTreasure();
             }else{
                 Debug.Log("subir");
+                StartCoroutine(MakeInvulnerable());
+                StartCoroutine(Blink());
             }
-            StartCoroutine(MakeInvulnerable());
-            StartCoroutine(Blink());
         }else if (other.CompareTag("Treasure") && !hasTreasure){ // Grab treasure
             // StartCoroutine(MakeInvulnerable());
             hasTreasure = true;
             camDirection = 1;
             other.transform.SetParent(transform);
             other.transform.localPosition = new Vector3(0, other.transform.localPosition.y, other.transform.localPosition.z);
+            Treasure treasureComponent = other.GetComponent<Treasure>();
+            treasureComponent.isGrounded = false;
+            treasureComponent.isHooked = true;
         }
     }
 
@@ -132,7 +132,19 @@ public class HookController : MonoBehaviour
         Debug.Log("ya no es invulnerable");
     }
 
-    IEnumerator DropTreasure() {
+    public void DropTreasure(){
+        if (invulnerable || endAnimation) return; // This function can be called from treasure OnTriggerEnter
+
+        treasure.transform.SetParent(null);
+        hasTreasure = false;
+        treasure.GetComponent<Treasure>().isHooked = false;
+        StartCoroutine(DropTreasureCoroutine());
+        camDirection = -1;
+        StartCoroutine(MakeInvulnerable());
+        StartCoroutine(Blink());
+    }
+
+    IEnumerator DropTreasureCoroutine() {
         treasureDropped = true;
         Debug.Log("boto el tesoro");
         yield return new WaitForSeconds(dropTreasureSeconds);
