@@ -12,8 +12,9 @@ public class HookController : MonoBehaviour
     [SerializeField] Transform seaTop;
     [SerializeField] Transform seaBottom;
     [SerializeField] GameObject treasure;
-    [Header("Treasure")]
+    [Header("Other")]
     public bool hasTreasure;
+    [SerializeField] float invulnerableSeconds = 1f;
     Camera cam;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
     float hookWidth, hookHeight;
@@ -21,6 +22,7 @@ public class HookController : MonoBehaviour
     float camDirection;
     float initialVerticalSpeed;
     bool startAnimation, endAnimation;
+    bool invulnerable;
 
     private void Start() {
         startAnimation = true;
@@ -97,13 +99,22 @@ public class HookController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (endAnimation) return;
-        if (other.CompareTag("Fish")){
+        if (other.CompareTag("Fish") && !invulnerable){
             Debug.Log("choco contra un pez");
         }else if (other.CompareTag("Treasure") && !hasTreasure){ // Grab treasure
+            StartCoroutine(makeInvulnerable());
             hasTreasure = true;
             camDirection = 1;
             other.transform.SetParent(transform);
             other.transform.localPosition = new Vector3(0, other.transform.localPosition.y, other.transform.localPosition.z);
         }
+    }
+
+    IEnumerator makeInvulnerable() {
+        invulnerable = true;
+        Debug.Log("invulnerable");
+        yield return new WaitForSeconds(invulnerableSeconds);
+        invulnerable = false;
+        Debug.Log("ya no es invulnerable");
     }
 }

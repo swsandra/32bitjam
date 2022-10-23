@@ -220,7 +220,7 @@ MeshCollider:
   m_GameObject: {fileID: 287148911}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -592,6 +592,7 @@ MonoBehaviour:
   seaBottom: {fileID: 1080825919}
   treasure: {fileID: 733428093}
   hasTreasure: 0
+  invulnerableSeconds: 3
 --- !u!1 &1080825915
 GameObject:
   m_ObjectHideFlags: 0
