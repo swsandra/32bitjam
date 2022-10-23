@@ -14,7 +14,9 @@ public class HookController : MonoBehaviour
     [SerializeField] GameObject treasure;
     [Header("Other")]
     public bool hasTreasure;
-    [SerializeField] float invulnerableSeconds = 1f;
+    [SerializeField] float invulnerableSeconds = 1.5f;
+    [SerializeField] float dropTreasureSeconds = 1f;
+    [SerializeField] float blinkRate = .1f;
     Camera cam;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
     float hookWidth, hookHeight;
@@ -23,6 +25,7 @@ public class HookController : MonoBehaviour
     float initialVerticalSpeed;
     bool startAnimation, endAnimation;
     bool invulnerable;
+    bool treasureDropped;
 
     private void Start() {
         startAnimation = true;
@@ -49,6 +52,8 @@ public class HookController : MonoBehaviour
 
     void Update()
     {
+        if (treasureDropped) return;
+
         Vector3 hookMovement;
         if (startAnimation){ // Start animation
             hookMovement = Vector3.down * (verticalSpeed/2) * Time.deltaTime;
@@ -100,9 +105,18 @@ public class HookController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (endAnimation) return;
         if (other.CompareTag("Fish") && !invulnerable){
-            Debug.Log("choco contra un pez");
+            if (hasTreasure){
+                treasure.transform.SetParent(null);
+                hasTreasure = false;
+                StartCoroutine(DropTreasure());
+                camDirection = -1;
+            }else{
+                Debug.Log("subir");
+            }
+            StartCoroutine(MakeInvulnerable());
+            StartCoroutine(Blink());
         }else if (other.CompareTag("Treasure") && !hasTreasure){ // Grab treasure
-            StartCoroutine(makeInvulnerable());
+            // StartCoroutine(MakeInvulnerable());
             hasTreasure = true;
             camDirection = 1;
             other.transform.SetParent(transform);
@@ -110,11 +124,40 @@ public class HookController : MonoBehaviour
         }
     }
 
-    IEnumerator makeInvulnerable() {
+    IEnumerator MakeInvulnerable() {
         invulnerable = true;
         Debug.Log("invulnerable");
         yield return new WaitForSeconds(invulnerableSeconds);
         invulnerable = false;
         Debug.Log("ya no es invulnerable");
+    }
+
+    IEnumerator DropTreasure() {
+        treasureDropped = true;
+        Debug.Log("boto el tesoro");
+        yield return new WaitForSeconds(dropTreasureSeconds);
+        treasureDropped = false;
+        Debug.Log("ya lo puede recoger");
+    }
+
+    IEnumerator Blink(){
+        var endTime = Time.time + invulnerableSeconds;
+        MeshRenderer[] childRenderers = GetComponentsInChildren<MeshRenderer>();
+        while(Time.time<endTime){
+            disableAllRenderers(childRenderers);
+            yield return new WaitForSeconds(blinkRate);
+            enableAllRenderers(childRenderers);
+            yield return new WaitForSeconds(blinkRate);
+        }
+    }
+
+    void disableAllRenderers(MeshRenderer[] renderers){
+        foreach (MeshRenderer meshRenderer in renderers)
+            meshRenderer.enabled = false;
+    }
+
+    void enableAllRenderers(MeshRenderer[] renderers){
+        foreach (MeshRenderer meshRenderer in renderers)
+            meshRenderer.enabled = true;
     }
 }
