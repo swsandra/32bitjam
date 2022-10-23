@@ -8,6 +8,7 @@ TagManager:
   - Treasure
   - Rock
   - Bottom
+  - Whirlpool
   layers:
   - Default
   - TransparentFX
