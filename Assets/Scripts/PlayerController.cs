@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [Header("Collisions")]
     [SerializeField] float collisionForce;
     [SerializeField] float moveCooldown;
+    [Header("Whirlpool")]
+    [SerializeField] float whirlpoolForce;
     
     Rigidbody rb;
     float speed;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     float movementHorizontal;
     float startingY;
     bool canMove = true;
+    Vector3 whirlpoolMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Rock") {
-            Debug.Log("CHOQUE CONTRA ROCK");
             Vector3 dir = other.GetContact(0).point - transform.position;
             dir = -dir.normalized;
             rb.AddForce(dir*collisionForce);
@@ -53,6 +55,20 @@ public class PlayerController : MonoBehaviour
 
             canMove = false;
             StartCoroutine(moveRecharge());
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.gameObject.tag == "Whirlpool") {
+            Vector3 dir = other.transform.position - transform.position;
+            dir = dir.normalized;
+            whirlpoolMovement = dir * whirlpoolForce;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.tag == "Whirlpool") {
+            whirlpoolMovement = Vector3.zero;
         }
     }
 
@@ -68,9 +84,9 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(new Vector3(0,rotation,0),Space.World);
 
             // Boat movement
-            speed = Mathf.Clamp(speed + movementVertical, 0, maxSpeed);
-            rb.velocity = transform.forward * speed;
-            
+            speed = Mathf.Clamp(speed + movementVertical*accelerationSpeed, 0, maxSpeed);
+            rb.velocity = (transform.forward * speed) + whirlpoolMovement;
+
             // Rotation tilt
             float tilt = tiltSpeed*movementHorizontal;
             float angle = transform.localEulerAngles.z;
