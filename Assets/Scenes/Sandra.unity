@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &106900626
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121860, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921298651267121862, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
+      propertyPath: m_Name
+      value: Fish3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc72e93e9089bb14d8e72bea81fe6197, type: 3}
 --- !u!1001 &168413528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,7 +559,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870716468}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 38.040005}
   m_LocalScale: {x: 5, y: 4.9999995, z: 4.9999995}
   m_ConstrainProportionsScale: 0
@@ -587,12 +644,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeed: 30
-  verticalSpeed: 20
+  verticalSpeed: 10
   seaTop: {fileID: 287148915}
   seaBottom: {fileID: 1080825919}
   treasure: {fileID: 733428093}
   hasTreasure: 0
-  invulnerableSeconds: 3
+  invulnerableSeconds: 2
+  dropTreasureSeconds: 1
+  blinkRate: 0.1
 --- !u!1 &1080825915
 GameObject:
   m_ObjectHideFlags: 0
