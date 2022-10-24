@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 3
-  lives: 3
+  lives: 1
   sinkDistance: 1
   blinkRate: 0.1
   vCam: {fileID: 801959161}
