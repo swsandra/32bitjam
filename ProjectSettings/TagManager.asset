@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fish
   - Treasure
   - Rock
   - Bottom
   - Whirlpool
+  - Obstacle
+  - Junk
   layers:
   - Default
   - TransparentFX
