@@ -19,6 +19,7 @@ public class HookController : MonoBehaviour
     [SerializeField] float moveUpSeconds = 1f;
     [SerializeField] float blinkRate = .1f;
     Camera cam;
+    Vector3 screenBounds;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
     float hookWidth, hookHeight;
     float hookTranslation;
@@ -35,7 +36,7 @@ public class HookController : MonoBehaviour
         cam = Camera.main;
         camDirection = -1;
         // Calculate screen limits
-        Vector3 screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
+        screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
         float camXOffset = cam.transform.position.x;
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         hookWidth = renderer.bounds.size.x;
@@ -67,9 +68,11 @@ public class HookController : MonoBehaviour
         if (endAnimation){ // Start animation
             hookMovement = Vector3.up * (verticalSpeed/2) * Time.deltaTime;
             transform.position += hookMovement;
-            if (transform.position.y >= hookAboveCamLimit) {
+            screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
+            float camYOffset = cam.transform.position.y;
+            if (treasure.transform.position.y >= hookAboveCamLimit || transform.position.y > (screenBounds.y*-1)+(camYOffset*2)) {
                 // endAnimation = false;
-                Debug.Log("salio el tesoro");
+                Debug.Log("salio de la pantalla");
                 // TODO: salir
             }
             return;
@@ -106,7 +109,7 @@ public class HookController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (endAnimation) return;
-        if (other.CompareTag("Fish") && !invulnerable){
+        if (other.CompareTag("Obstacle") && !invulnerable){
             if (hasTreasure){
                 DropTreasure();
             }else{
@@ -123,6 +126,9 @@ public class HookController : MonoBehaviour
             Treasure treasureComponent = other.GetComponent<Treasure>();
             treasureComponent.isGrounded = false;
             treasureComponent.isHooked = true;
+        }else if (other.CompareTag("Junk")){ // Treasure was junk
+            Debug.Log("toco el tesoro basura");
+            endAnimation = true;
         }
     }
 
