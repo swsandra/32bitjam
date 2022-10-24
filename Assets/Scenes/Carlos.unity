@@ -940,6 +940,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8dacfb0556eeb4896c0755a2fa5782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLives: 3
+  lives: 3
+  sinkDistance: 1
+  blinkRate: 0.1
+  vCam: {fileID: 801959161}
+  deathRotationSpeed: 1
+  deathSinkSpeed: 0.1
   accelerationSpeed: 5
   maxSpeed: 30
   rotationSpeed: 1
@@ -952,6 +959,7 @@ MonoBehaviour:
   collisionForce: 250
   moveCooldown: 2
   whirlpoolForce: 20
+  whirlpoolDamageRange: 1
 --- !u!1001 &1226709827
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class Treasure : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Bottom")){
             isGrounded = true;
-        }else if (other.CompareTag("Fish") && isHooked){
+        }else if (other.CompareTag("Obstacle") && isHooked){
             hook.GetComponent<HookController>().DropTreasure();
         }
     }
