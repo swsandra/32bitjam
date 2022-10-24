@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3608628150170001382}
   m_Layer: 0
   m_Name: Fish6
-  m_TagString: Fish
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d147f4a39223d45843f877fcec7e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  speed: 0
   rotationSpeed: 30
   maxRotation: 45
 --- !u!136 &6153173688194894114
