@@ -127,25 +127,29 @@ public class PlayerController : MonoBehaviour
                 lives--;
                 speed = 0f;
                 rb.velocity = Vector3.zero;
+                whirlpoolMovement = Vector3.zero;
                 StartCoroutine(Blink(moveCooldown));
                 StartCoroutine(moveRecharge());
+                
+                other.GetComponent<CapsuleCollider>().enabled=false;
                 Destroy(other.gameObject, 1f);
-                whirlpoolMovement = Vector3.zero;
                 return;
             }
-            dir = dir.normalized;
-            whirlpoolMovement = dir * whirlpoolForce;
+            else {
+                dir = dir.normalized;
+                whirlpoolMovement = dir * whirlpoolForce;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.tag == "Whirlpool") {
             whirlpoolMovement = Vector3.zero;
-            Debug.Log("exit");
         }
     }
 
     IEnumerator death() {
+        yield return new WaitForSeconds(2);
         while ((transform.rotation.eulerAngles.x > 275f) || (transform.rotation.eulerAngles.x < maxBuoyancyRotation/2)) {
             transform.Rotate(new Vector3(-deathRotationSpeed*Time.fixedDeltaTime, 0, 0), Space.Self);
             yield return new WaitForFixedUpdate();

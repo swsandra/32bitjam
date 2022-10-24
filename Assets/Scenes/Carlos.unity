@@ -959,7 +959,7 @@ MonoBehaviour:
   collisionForce: 250
   moveCooldown: 2
   whirlpoolForce: 20
-  whirlpoolDamageRange: 1
+  whirlpoolDamageRange: 6
 --- !u!1001 &1226709827
 PrefabInstance:
   m_ObjectHideFlags: 0
