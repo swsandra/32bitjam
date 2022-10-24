@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 7978561183680582498}
   - component: {fileID: 4354798922168489611}
   - component: {fileID: 2813087574553013063}
-  - component: {fileID: -6783759594917961907}
   m_Layer: 0
   m_Name: Bottle_02
-  m_TagString: Junk
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,19 +98,3 @@ CapsuleCollider:
   m_Height: 0.0041932333
   m_Direction: 2
   m_Center: {x: -0.000011668443, y: -6.6760523e-18, z: 0.0011790305}
---- !u!54 &-6783759594917961907
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132257413976670138}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
