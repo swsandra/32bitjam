@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     bool canMove = true;
     Vector3 whirlpoolMovement;
     bool dead = false;
+    float deathRotationCounter = 0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         startingY = transform.position.y;
         lives = maxLives;
+        deathRotationCounter = 0f;
     }
 
     // Update is called once per frame
@@ -60,7 +63,7 @@ public class PlayerController : MonoBehaviour
             canMove = false;
             vCam.enabled = false;
             rb.velocity = Vector3.zero;
-            StartCoroutine(death());
+            StartCoroutine(Death());
         }
     }
 
@@ -115,7 +118,7 @@ public class PlayerController : MonoBehaviour
             canMove = false;
             lives--;
             StartCoroutine(Blink(moveCooldown));
-            StartCoroutine(moveRecharge());
+            StartCoroutine(MoveRecharge());
         }
     }
 
@@ -127,37 +130,43 @@ public class PlayerController : MonoBehaviour
                 lives--;
                 speed = 0f;
                 rb.velocity = Vector3.zero;
-                StartCoroutine(Blink(moveCooldown));
-                StartCoroutine(moveRecharge());
-                Destroy(other.gameObject, 1f);
                 whirlpoolMovement = Vector3.zero;
+                StartCoroutine(Blink(moveCooldown));
+                StartCoroutine(MoveRecharge());
+                
+                other.GetComponent<CapsuleCollider>().enabled=false;
+                Destroy(other.gameObject, 1f);
                 return;
             }
-            dir = dir.normalized;
-            whirlpoolMovement = dir * whirlpoolForce;
+            else {
+                dir = dir.normalized;
+                whirlpoolMovement = dir * whirlpoolForce;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.tag == "Whirlpool") {
             whirlpoolMovement = Vector3.zero;
-            Debug.Log("exit");
         }
     }
 
-    IEnumerator death() {
-        while ((transform.rotation.eulerAngles.x > 275f) || (transform.rotation.eulerAngles.x < maxBuoyancyRotation/2)) {
+    IEnumerator Death() {
+        yield return new WaitForSeconds(2);
+        while (deathRotationCounter < 90) {
             transform.Rotate(new Vector3(-deathRotationSpeed*Time.fixedDeltaTime, 0, 0), Space.Self);
             yield return new WaitForFixedUpdate();
+            deathRotationCounter += deathRotationSpeed*Time.fixedDeltaTime;
+            Debug.Log(deathRotationCounter);
         }
         yield return new WaitForSeconds(1);
         while(true) {
-            transform.position -= new Vector3(0, deathSinkSpeed*Time.fixedDeltaTime ,0);
+            transform.position -= new Vector3(0, deathSinkSpeed*Time.fixedDeltaTime, 0);
             yield return new WaitForFixedUpdate();
         }
     }
 
-    IEnumerator moveRecharge() {
+    IEnumerator MoveRecharge() {
         yield return new WaitForSeconds(moveCooldown);
         canMove = true;
     }

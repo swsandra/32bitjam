@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 3
-  lives: 3
+  lives: 1
   sinkDistance: 1
   blinkRate: 0.1
   vCam: {fileID: 801959161}
@@ -959,7 +959,7 @@ MonoBehaviour:
   collisionForce: 250
   moveCooldown: 2
   whirlpoolForce: 20
-  whirlpoolDamageRange: 1
+  whirlpoolDamageRange: 6
 --- !u!1001 &1226709827
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class HookController : MonoBehaviour
     [Header("Time intervals")]
     [SerializeField] float invulnerableSeconds = 1.5f;
     [SerializeField] float dropTreasureSeconds = 1f;
-    [SerializeField] float moveUpSeconds = 1f;
+    // [SerializeField] float moveUpSeconds = 1f;
     [SerializeField] float blinkRate = .1f;
     Camera cam;
     Vector3 screenBounds;
@@ -184,7 +184,8 @@ public class HookController : MonoBehaviour
     IEnumerator MoveUpCoroutine(){
         verticalSpeed *= 2;
         camDirection = 1;
-        yield return new WaitForSeconds(moveUpSeconds);
+        // yield return new WaitForSeconds(moveUpSeconds);
+        yield return new WaitForSeconds(invulnerableSeconds);
         verticalSpeed = initialVerticalSpeed;
         camDirection = -1;
     }
