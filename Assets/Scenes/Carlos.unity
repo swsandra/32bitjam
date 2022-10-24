@@ -940,6 +940,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8dacfb0556eeb4896c0755a2fa5782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLives: 3
+  lives: 3
+  sinkDistance: 1
+  blinkRate: 0.1
+  vCam: {fileID: 0}
   accelerationSpeed: 5
   maxSpeed: 30
   rotationSpeed: 1
