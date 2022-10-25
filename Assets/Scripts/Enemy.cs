@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float speed;
-    [SerializeField] List<Transform> objectives;
+    [SerializeField] GameObject objectivesParent;
     [SerializeField] float reachDistance;
     [Header("Rotation")]
     [SerializeField] float rotationSpeed;
@@ -19,11 +19,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxBuoyancyRotation;
     float startingY;
     Transform currentObjective;
+    List<Transform> objectives;
 
     // Start is called before the first frame update
     void Start()
     {
         startingY = transform.position.y;
+        objectives = new List<Transform>();
+        for (int i = 0; i < objectivesParent.transform.childCount; i++){
+            objectives.Add(objectivesParent.transform.GetChild(i).transform);
+        }
         currentObjective = objectives[0];
     }
 
