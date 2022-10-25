@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveCooldown;
     [Header("Whirlpool")]
     [SerializeField] float whirlpoolForce;
-    [SerializeField] float whirlpoolDamageRange;
     
     Rigidbody rb;
     float speed;
@@ -125,23 +124,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.tag == "Whirlpool") {
             Vector3 dir = other.transform.position - transform.position;
-            if (dir.magnitude <= whirlpoolDamageRange) {
-                canMove = false;
-                lives--;
-                speed = 0f;
-                rb.velocity = Vector3.zero;
-                whirlpoolMovement = Vector3.zero;
-                StartCoroutine(Blink(moveCooldown));
-                StartCoroutine(MoveRecharge());
-                
-                other.GetComponent<CapsuleCollider>().enabled=false;
-                Destroy(other.gameObject, 1f);
-                return;
-            }
-            else {
-                dir = dir.normalized;
-                whirlpoolMovement = dir * whirlpoolForce;
-            }
+            dir = Vector3.Cross(dir, Vector3.up);
+            dir = dir.normalized;
+            whirlpoolMovement = dir * whirlpoolForce;
         }
     }
 
