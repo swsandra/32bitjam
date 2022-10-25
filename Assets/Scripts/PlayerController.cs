@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxBuoyancyRotation;
     [Header("Collisions")]
     [SerializeField] float collisionForce;
-    [SerializeField] float moveCooldown;
+    [SerializeField] float invulnerableDuration;
     [Header("Whirlpool")]
     [SerializeField] float whirlpoolForce;
     
@@ -119,8 +119,8 @@ public class PlayerController : MonoBehaviour
 
             canCollide = false;
             lives--;
-            StartCoroutine(Blink(moveCooldown));
-            StartCoroutine(MoveRecharge());
+            StartCoroutine(Blink(invulnerableDuration));
+            StartCoroutine(invulnerable());
         }
     }
 
@@ -154,8 +154,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator MoveRecharge() {
-        yield return new WaitForSeconds(moveCooldown);
+    IEnumerator invulnerable() {
+        yield return new WaitForSeconds(invulnerableDuration);
         canCollide = true;
         rockMovement = Vector3.zero;
     }

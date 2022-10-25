@@ -859,7 +859,7 @@ MonoBehaviour:
   maxBuoyancy: 2
   maxBuoyancyRotation: 15
   collisionForce: 10
-  moveCooldown: 2
+  invulnerableDuration: 2
   whirlpoolForce: 20
 --- !u!1001 &1226709827
 PrefabInstance:
