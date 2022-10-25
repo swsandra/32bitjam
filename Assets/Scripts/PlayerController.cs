@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
     float movementVertical;
     float movementHorizontal;
     float startingY;
-    bool canMove = true;
+    bool canCollide = true;
+    Vector3 rockMovement;
     Vector3 whirlpoolMovement;
     bool dead = false;
     float deathRotationCounter = 0f;
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
         movementHorizontal = Input.GetAxis("Horizontal");
         if (lives <= 0) {
             dead = true;
-            canMove = false;
+            canCollide = false;
             vCam.enabled = false;
             rb.velocity = Vector3.zero;
             StartCoroutine(Death());
@@ -68,32 +69,34 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         if (!dead) {
-            if (canMove) {
-                // Boat rotation
-                float rotation = rotationSpeed*movementHorizontal;
-                transform.Rotate(new Vector3(0,rotation,0),Space.World);
+            // Boat rotation
+            float rotation = rotationSpeed*movementHorizontal;
+            transform.Rotate(new Vector3(0,rotation,0),Space.World);
 
-                // Boat movement
-                speed = Mathf.Clamp(speed + movementVertical*accelerationSpeed, 0, maxSpeed);
-                rb.velocity = (transform.forward * speed) + whirlpoolMovement;
+            // Boat movement
+            speed = Mathf.Clamp(speed + movementVertical*accelerationSpeed, 0, maxSpeed);
+            rb.velocity = (transform.forward * speed);
 
-                // Rotation tilt
-                float tilt = tiltSpeed*movementHorizontal;
-                float angle = transform.localEulerAngles.z;
-                angle = (angle > 180) ? angle - 360 : angle;
+            // Rotation tilt
+            float tilt = tiltSpeed*movementHorizontal;
+            float angle = transform.localEulerAngles.z;
+            angle = (angle > 180) ? angle - 360 : angle;
 
-                if(Mathf.Abs(angle) <= maxRotationTilt){
-                    transform.Rotate(new Vector3(0,0,-tilt), Space.Self);
-                }
-
-                if (tilt == 0) {
-                    transform.eulerAngles = Vector3.Lerp(
-                        new Vector3(transform.eulerAngles.x,transform.eulerAngles.y, angle),
-                        new Vector3(transform.eulerAngles.x,transform.eulerAngles.y,0),
-                        Time.deltaTime * tiltSpeed
-                    );
-                }
+            if(Mathf.Abs(angle) <= maxRotationTilt){
+                transform.Rotate(new Vector3(0,0,-tilt), Space.Self);
             }
+
+            if (tilt == 0) {
+                transform.eulerAngles = Vector3.Lerp(
+                    new Vector3(transform.eulerAngles.x,transform.eulerAngles.y, angle),
+                    new Vector3(transform.eulerAngles.x,transform.eulerAngles.y,0),
+                    Time.deltaTime * tiltSpeed
+                );
+            }
+
+            // Extra movement
+            rb.velocity += whirlpoolMovement + rockMovement;
+
             // Buoyancy
             float buoyancyMovement = Mathf.PingPong(Time.time * buoyancySpeed, maxBuoyancy) - (maxBuoyancy/2);
             float buoyancyRotation = Mathf.PingPong(Time.time * buoyancyRotationSpeed, maxBuoyancyRotation) - (maxBuoyancyRotation/2);
@@ -108,13 +111,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.tag == "Rock") {
+        if (canCollide && other.gameObject.tag == "Rock") {
             Vector3 dir = other.GetContact(0).point - transform.position;
             dir = -dir.normalized;
-            rb.AddForce(dir*collisionForce);
+            rockMovement = dir*collisionForce;
             speed = 0f;
 
-            canMove = false;
+            canCollide = false;
             lives--;
             StartCoroutine(Blink(moveCooldown));
             StartCoroutine(MoveRecharge());
@@ -153,7 +156,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MoveRecharge() {
         yield return new WaitForSeconds(moveCooldown);
-        canMove = true;
+        canCollide = true;
+        rockMovement = Vector3.zero;
     }
 
     IEnumerator Blink(float blinkTime) {
