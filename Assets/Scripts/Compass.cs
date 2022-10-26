@@ -6,14 +6,15 @@ using System.Linq;
 public class Compass : MonoBehaviour
 {   
     [SerializeField]
-    GameObject[] treasures;
+    List<GameObject> treasures;
     public Transform dummy;
     public Transform player;
     public Vector3 rotate;
     // Start is called before the first frame update
     void Start()
     {
-        treasures = GameObject.FindGameObjectsWithTag("Treasure");
+        treasures = GameObject.FindGameObjectsWithTag("Treasure").ToList();
+        treasures.AddRange(GameObject.FindGameObjectsWithTag("Junk").ToList());
     }
 
     // Update is called once per frame
