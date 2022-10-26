@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [Header("Whirlpool")]
     [SerializeField] float whirlpoolForce;
     
+    CinemachineImpulseSource impulse;
     Rigidbody rb;
     float speed;
     float movementVertical;
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
         startingY = transform.position.y;
         lives = maxLives;
         deathRotationCounter = 0f;
+        impulse = transform.GetComponent<CinemachineImpulseSource>();
     }
 
     // Update is called once per frame
@@ -59,12 +61,17 @@ public class PlayerController : MonoBehaviour
         movementVertical = Input.GetAxis("Vertical");
         movementHorizontal = Input.GetAxis("Horizontal");
         if (lives <= 0) {
+            shakeCamera();
             dead = true;
             canCollide = false;
             vCam.enabled = false;
             rb.velocity = Vector3.zero;
             StartCoroutine(Death());
         }
+    }
+
+    void shakeCamera() {
+        impulse.GenerateImpulse();
     }
 
     private void FixedUpdate() {
@@ -112,6 +119,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if (canCollide && other.gameObject.tag == "Rock") {
+            shakeCamera();
             Vector3 dir = other.GetContact(0).point - transform.position;
             dir = -dir.normalized;
             rockMovement = dir*collisionForce;
@@ -127,9 +135,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.tag == "Whirlpool") {
             Vector3 dir = other.transform.position - transform.position;
-            dir = Vector3.Cross(dir, Vector3.up);
-            dir = dir.normalized;
-            whirlpoolMovement = dir * whirlpoolForce;
+            float distance = dir.magnitude;
+            dir = dir/10 + Vector3.Cross(dir, Vector3.up);
+            whirlpoolMovement = dir.normalized * distance * whirlpoolForce;
         }
     }
 
