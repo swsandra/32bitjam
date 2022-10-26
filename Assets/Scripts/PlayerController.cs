@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using System.Linq;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,6 +33,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float invulnerableDuration;
     [Header("Whirlpool")]
     [SerializeField] float whirlpoolForce;
+    [Header("Treasures")]
+    [SerializeField] float distanceToTreasure;
+    List<GameObject> treasures; 
     
     CinemachineImpulseSource impulse;
     Rigidbody rb;
@@ -53,6 +58,8 @@ public class PlayerController : MonoBehaviour
         lives = maxLives;
         deathRotationCounter = 0f;
         impulse = transform.GetComponent<CinemachineImpulseSource>();
+        treasures = GameObject.FindGameObjectsWithTag("Treasure").ToList();
+        treasures.AddRange(GameObject.FindGameObjectsWithTag("Junk").ToList());
     }
 
     // Update is called once per frame
@@ -67,6 +74,17 @@ public class PlayerController : MonoBehaviour
             vCam.enabled = false;
             rb.velocity = Vector3.zero;
             StartCoroutine(Death());
+        }
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            GameObject nearestTreasure = treasures.OrderBy(t=> Vector3.Distance(transform.position, t.transform.position)).FirstOrDefault();
+            if (Vector3.Distance(nearestTreasure.transform.position, transform.position) <= distanceToTreasure) {
+                Debug.Log(nearestTreasure.tag + " is near");
+                // TODO Load hook scene with junk or treasure
+            }
+            else {
+                Debug.Log("Nothing near me, closest: " + Vector3.Distance(nearestTreasure.transform.position, transform.position));
+                // TODO animation(?)
+            }
         }
     }
 
