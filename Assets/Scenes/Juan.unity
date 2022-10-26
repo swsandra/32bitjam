@@ -541,6 +541,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.2599022
       objectReference: {fileID: 0}
+    - target: {fileID: 1763395950131817208, guid: 58a5a2274dfbe814b8a6e14458e02200, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 543450652970073191}
     - target: {fileID: 3571772743528529017, guid: 58a5a2274dfbe814b8a6e14458e02200, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.662
@@ -1310,30 +1314,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2519473635315226807, guid: ea527dd9b6bfa7d449aa0d3090fae753, type: 3}
---- !u!1 &754201955 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8902484680798198504, guid: 58a5a2274dfbe814b8a6e14458e02200, type: 3}
-  m_PrefabInstance: {fileID: 245524870}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &754201959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 754201955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640d9800a814bae4492156d8b19e66ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.3
-  player: {fileID: 543450652970073191}
-  rotationSpeed: 0.7
-  tiltSpeed: 0.5
-  maxRotationTilt: 20
-  buoyancySpeed: 1
-  maxBuoyancy: 2
 --- !u!1 &754892285
 GameObject:
   m_ObjectHideFlags: 0
