@@ -21,7 +21,7 @@ public class HookController : MonoBehaviour
     Camera cam;
     Vector3 screenBounds;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
-    float hookWidth, hookHeight;
+    float hookWidth, hookHeight, treasureHeight;
     float hookTranslation;
     float camDirection;
     float initialVerticalSpeed;
@@ -44,7 +44,8 @@ public class HookController : MonoBehaviour
         leftLimit = screenBounds.x+hookWidth;
         rightLimit = (screenBounds.x*-1)+(camXOffset*2)-hookWidth;
         topLimit = seaTop.position.y-hookHeight;
-        bottomLimit = treasure.transform.position.y+(hookHeight*2);
+        treasureHeight = treasure.GetComponent<Renderer>().bounds.size.y;
+        // bottomLimit = treasure.transform.position.y+(hookHeight*2);
         initialVerticalSpeed = verticalSpeed;
         // Start camera on sea top
         cam.transform.position = new Vector3(cam.transform.position.x, topLimit, cam.transform.position.z);
@@ -78,7 +79,7 @@ public class HookController : MonoBehaviour
             return;
         }
 
-        bottomLimit = treasure.transform.position.y+(hookHeight*2); // Treasure can change position
+        bottomLimit = CalculateBottomLimit(); // Treasure can change position
 
         hookTranslation = Input.GetAxisRaw("Horizontal");
         // camTranslation = Input.GetAxisRaw("Vertical");
@@ -130,6 +131,10 @@ public class HookController : MonoBehaviour
             Debug.Log("toco el tesoro basura");
             endAnimation = true;
         }
+    }
+
+    float CalculateBottomLimit(){
+        return treasure.transform.position.y+treasureHeight;
     }
 
     IEnumerator MakeInvulnerable() {
