@@ -45,7 +45,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.23170057, g: 1, b: 0.1745283, a: 1}
   m_Intensity: 2
-  m_Range: 30
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8902484680798198505}
   - component: {fileID: 834742013}
-  - component: {fileID: 834742012}
+  - component: {fileID: 1763395950131817208}
   m_Layer: 0
   m_Name: FlyingDutchman
   m_TagString: Rock
@@ -121,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 8902484680798198504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -816.8, y: 0, z: 135.00891}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8902484680940001360}
@@ -145,7 +145,7 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 2
   m_Center: {x: 0, y: 0.92, z: 0}
---- !u!114 &834742012
+--- !u!114 &1763395950131817208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,19 +154,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8902484680798198504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5df3cb299104254ea09ac4b8d1f618b, type: 3}
+  m_Script: {fileID: 11500000, guid: 640d9800a814bae4492156d8b19e66ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  objectivesParent: {fileID: 0}
-  reachDistance: 10
+  speed: 0.3
+  player: {fileID: 0}
   rotationSpeed: 0.7
   tiltSpeed: 0.5
   maxRotationTilt: 20
   buoyancySpeed: 1
-  buoyancyRotationSpeed: 7
   maxBuoyancy: 2
-  maxBuoyancyRotation: 15
 --- !u!1 &8902484680940001363
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f3bd9d13aaccffc409c8056856fde471, type: 2}
+  - {fileID: 2100000, guid: ee32f402c74c14642ad2161920a9fd47, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -311,7 +308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f3bd9d13aaccffc409c8056856fde471, type: 2}
+  - {fileID: 2100000, guid: ee32f402c74c14642ad2161920a9fd47, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -394,7 +391,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f3bd9d13aaccffc409c8056856fde471, type: 2}
+  - {fileID: 2100000, guid: ee32f402c74c14642ad2161920a9fd47, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
