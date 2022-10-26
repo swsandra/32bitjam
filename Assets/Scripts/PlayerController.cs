@@ -127,9 +127,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.tag == "Whirlpool") {
             Vector3 dir = other.transform.position - transform.position;
-            dir = Vector3.Cross(dir, Vector3.up);
-            dir = dir.normalized;
-            whirlpoolMovement = dir * whirlpoolForce;
+            float distance = dir.magnitude;
+            dir = dir/10 + Vector3.Cross(dir, Vector3.up);
+            whirlpoolMovement = dir.normalized * distance * whirlpoolForce;
         }
     }
 
