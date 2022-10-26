@@ -303,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6148718443401285179, guid: 4bda34ed274124749933dbd64c9865db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 304
+      value: 291
       objectReference: {fileID: 0}
     - target: {fileID: 6148718443401285179, guid: 4bda34ed274124749933dbd64c9865db, type: 3}
       propertyPath: m_LocalPosition.y
@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3323658066073319482, guid: 53fdf378a057ea24682d4f2797ca3b77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 451.6
+      value: 467
       objectReference: {fileID: 0}
     - target: {fileID: 3323658066073319482, guid: 53fdf378a057ea24682d4f2797ca3b77, type: 3}
       propertyPath: m_LocalPosition.y
@@ -791,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3323658066073319482, guid: 53fdf378a057ea24682d4f2797ca3b77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 630.2
+      value: 636
       objectReference: {fileID: 0}
     - target: {fileID: 3323658066073319482, guid: 53fdf378a057ea24682d4f2797ca3b77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1852,7 +1852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325160270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 344, y: 0.1, z: 529}
+  m_LocalPosition: {x: 368.6, y: 0.1, z: 506.1}
   m_LocalScale: {x: 200, y: 0.0001, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2142,7 +2142,7 @@ GameObject:
   - component: {fileID: 392131474}
   m_Layer: 0
   m_Name: Junk (1)
-  m_TagString: Junk
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3122,15 +3122,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6010713496758442657, guid: 2c3039ed6238aec4c82d68cbeddb4dd5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 396
+      value: 423
       objectReference: {fileID: 0}
     - target: {fileID: 6010713496758442657, guid: 2c3039ed6238aec4c82d68cbeddb4dd5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6010713496758442657, guid: 2c3039ed6238aec4c82d68cbeddb4dd5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 633.2
+      value: 639
       objectReference: {fileID: 0}
     - target: {fileID: 6010713496758442657, guid: 2c3039ed6238aec4c82d68cbeddb4dd5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3482,7 +3482,7 @@ GameObject:
   - component: {fileID: 565450360}
   m_Layer: 0
   m_Name: Junk (2)
-  m_TagString: Junk
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4275,7 +4275,7 @@ GameObject:
   - component: {fileID: 702913498}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Treasure
+  m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7192,7 +7192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175649042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 344, y: 0.1, z: 730}
+  m_LocalPosition: {x: 341, y: 0.1, z: 751}
   m_LocalScale: {x: 200, y: 0.0001, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9235,7 +9235,7 @@ GameObject:
   - component: {fileID: 1523353886}
   m_Layer: 0
   m_Name: Junk (3)
-  m_TagString: Junk
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10691,7 +10691,7 @@ GameObject:
   - component: {fileID: 1715587383}
   m_Layer: 0
   m_Name: Junk
-  m_TagString: Junk
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10887,7 +10887,7 @@ GameObject:
   - component: {fileID: 1747362551}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Treasure
+  m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11405,15 +11405,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2166935342333168208, guid: 7f15a3470799867428f5fec534007e9b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 269.2
+      value: 262.6
       objectReference: {fileID: 0}
     - target: {fileID: 2166935342333168208, guid: 7f15a3470799867428f5fec534007e9b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2166935342333168208, guid: 7f15a3470799867428f5fec534007e9b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 622.4
+      value: 622.7
       objectReference: {fileID: 0}
     - target: {fileID: 2166935342333168208, guid: 7f15a3470799867428f5fec534007e9b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11938,7 +11938,7 @@ GameObject:
   - component: {fileID: 1896414729}
   m_Layer: 0
   m_Name: True Treasure
-  m_TagString: Treasure
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12355,7 +12355,7 @@ GameObject:
   - component: {fileID: 1956612314}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Treasure
+  m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12428,7 +12428,7 @@ GameObject:
   - component: {fileID: 2007878261}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Treasure
+  m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
