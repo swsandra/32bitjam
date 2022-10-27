@@ -18,8 +18,8 @@ public class FishSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnFish());
         spawnPositions = System.Array.FindAll(GetComponentsInChildren<Transform>(), child => child != this.transform);
+        StartCoroutine(SpawnFish());
     }
 
     IEnumerator SpawnFish() {

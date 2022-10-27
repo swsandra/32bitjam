@@ -5,8 +5,8 @@ using UnityEngine;
 public class Junk : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] float speed = .3f;
-    [SerializeField] float maxYDistance = 2f;
+    public float speed = .3f;
+    public float maxYDistance = 2f;
     Vector3 pos1, pos2;
 
     // Start is called before the first frame update

@@ -117,7 +117,7 @@ public class HookController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (endAnimation) return;
+        if (startAnimation || endAnimation) return;
         if (other.CompareTag("Obstacle") && !invulnerable){
             if (hasTreasure){
                 DropTreasure();
