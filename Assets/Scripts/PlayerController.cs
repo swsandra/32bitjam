@@ -37,12 +37,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float distanceToTreasure;
     List<GameObject> treasures; 
     
+    public float startingY;
     CinemachineImpulseSource impulse;
     Rigidbody rb;
     float speed;
     float movementVertical;
     float movementHorizontal;
-    float startingY;
     bool canCollide = true;
     Vector3 rockMovement;
     Vector3 whirlpoolMovement;
