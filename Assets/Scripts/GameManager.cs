@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] string hook1;
     [SerializeField] string hook2;
     [SerializeField] string hook3;
+    [SerializeField] string loading;
+    public string nextScene;
 
 
     private void Awake() {
@@ -48,28 +50,29 @@ public class GameManager : MonoBehaviour
         
         // Dictionary(?)
         if (SceneManager.GetActiveScene().name.Equals(level1)) {
-            SceneManager.LoadScene(hook1);
+            nextScene = hook1;
         }
         else if (SceneManager.GetActiveScene().name.Equals(level2)) {
-            SceneManager.LoadScene(hook2);
+            nextScene = hook2;
         }
         else if (SceneManager.GetActiveScene().name.Equals(level3)) {
-            SceneManager.LoadScene(hook3);
+            nextScene = hook3;
         }
+        SceneManager.LoadScene(loading);
     }
 
     public void LoadLevelSceneFromHook() {
-        treasureType = null;
 
         // Dictionary(?)
         if (SceneManager.GetActiveScene().name.Equals(hook1)) {
-            SceneManager.LoadScene(level1);
+            nextScene = level1;
         }
         else if (SceneManager.GetActiveScene().name.Equals(hook2)) {
-            SceneManager.LoadScene(level2);
+            nextScene = level2;
         }
         else if (SceneManager.GetActiveScene().name.Equals(hook3)) {
-            SceneManager.LoadScene(level3);
+            nextScene = level3;
         }
+        SceneManager.LoadScene(loading);
     }
 }
