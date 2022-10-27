@@ -110,7 +110,7 @@ public class HookController : MonoBehaviour
             Mathf.Clamp(cam.transform.position.y, bottomLimit, topLimit),
             cam.transform.position.z);
 
-        if (cam.transform.position.y == topLimit && hasTreasure){
+        if (cam.transform.position.y >= topLimit && hasTreasure){
             endAnimation = true;
             // Debug.Log("Gano");
         }
@@ -130,8 +130,8 @@ public class HookController : MonoBehaviour
             // StartCoroutine(MakeInvulnerable());
             hasTreasure = true;
             camDirection = 1;
+            other.transform.position = new Vector3(transform.position.x, transform.position.y-(treasureHeight/2), other.transform.position.z);
             other.transform.SetParent(transform);
-            other.transform.position = new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z);
             Treasure treasureComponent = other.GetComponent<Treasure>();
             treasureComponent.isGrounded = false;
             treasureComponent.isHooked = true;
