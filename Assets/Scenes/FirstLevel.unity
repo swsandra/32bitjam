@@ -6207,6 +6207,7 @@ MonoBehaviour:
   collisionForce: 10
   invulnerableDuration: 2
   whirlpoolForce: 20
+  distanceToTreasure: 30
 --- !u!1001 &1204158051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9731,6 +9732,66 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6eaadf9fb7ae44893cc5ccc15eb315, type: 3}
+--- !u!1 &1856657700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1856657702}
+  - component: {fileID: 1856657701}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1856657701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856657700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a96571657815041a335916d530b0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLives: 3
+  lives: 3
+  startingY: -5
+  startingPosition: {x: 414, y: -5, z: 827}
+  lastPosition: {x: 414, y: -5, z: 827}
+  treasuresCollected: []
+  treasureType: 
+  menu: 
+  level1: FirstLevel
+  level2: 
+  level3: 
+  hook1: FirstHook
+  hook2: 
+  hook3: 
+  loading: Loading
+  nextScene: 
+--- !u!4 &1856657702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856657700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1883815394
 GameObject:
   m_ObjectHideFlags: 0
@@ -10581,7 +10642,7 @@ GameObject:
   - component: {fileID: 919132148710794976}
   m_Layer: 0
   m_Name: PirateBoat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadHookSceneFromLevel(string nextTreasureType, string treasureName) {
         lastPosition = player.transform.position;
-        startingY = player.GetComponent<PlayerController>().startingY;
+        startingY = startingPosition.y;
         treasureType = nextTreasureType;
         treasuresCollected.Add(treasureName);
         

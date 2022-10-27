@@ -82,7 +82,8 @@ public class HookController : MonoBehaviour
             if (treasure.transform.position.y >= hookAboveCamLimit || transform.position.y > camTopRight.y) {
                 // endAnimation = false;
                 Debug.Log("salio de la pantalla");
-                // TODO: salir
+                // load level scene
+                GameManager.instance.LoadLevelSceneFromHook();
             }
             return;
         }

@@ -32,6 +32,7 @@ public class Loading : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneToLoad = GameManager.instance.nextScene;
         maxBarSize = bar.localScale.x;
         bar.localScale = new Vector3(0, bar.localScale.y, bar.localScale.z);
         ShuffleTipsArray();

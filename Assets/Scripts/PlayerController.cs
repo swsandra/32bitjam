@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float distanceToTreasure;
     List<GameObject> treasures; 
     
-    public float startingY;
+    float startingY;
     CinemachineImpulseSource impulse;
     Rigidbody rb;
     float speed;
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         treasures = GameObject.FindGameObjectsWithTag("Treasure").ToList();
         treasures.AddRange(GameObject.FindGameObjectsWithTag("Junk").ToList());
+        transform.position = GameManager.instance.lastPosition;
     }
 
     // Update is called once per frame
@@ -89,6 +90,7 @@ public class PlayerController : MonoBehaviour
             if (Vector3.Distance(nearestTreasure.transform.position, transform.position) <= distanceToTreasure) {
                 Debug.Log(nearestTreasure.tag + " is near");
                 // TODO Load hook scene with junk or treasure
+                Debug.Log(nearestTreasure.tag + " " + nearestTreasure.name);
                 GameManager.instance.LoadHookSceneFromLevel(nearestTreasure.tag, nearestTreasure.name);
             }
             else {
