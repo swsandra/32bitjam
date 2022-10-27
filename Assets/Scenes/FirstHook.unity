@@ -373,6 +373,7 @@ MonoBehaviour:
   maxSpeed: 0.5
   minYDistance: 2
   maxYDistance: 4
+  spawnPointsCount: 3
 --- !u!4 &413480350
 Transform:
   m_ObjectHideFlags: 0
