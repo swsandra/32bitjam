@@ -49,13 +49,22 @@ public class PlayerController : MonoBehaviour
     bool dead = false;
     float deathRotationCounter = 0f;
 
+    public int Lives {
+        get => lives;
+        set {
+            lives = value;
+            GameManager.instance.lives = lives;
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        startingY = transform.position.y;
-        lives = maxLives;
+        startingY = GameManager.instance.startingY;
+        maxLives = GameManager.instance.maxLives;
+        Lives = GameManager.instance.lives;
         deathRotationCounter = 0f;
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         treasures = GameObject.FindGameObjectsWithTag("Treasure").ToList();
@@ -67,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         movementVertical = Input.GetAxis("Vertical");
         movementHorizontal = Input.GetAxis("Horizontal");
-        if (lives <= 0) {
+        if (Lives <= 0) {
             shakeCamera();
             dead = true;
             canCollide = false;
@@ -80,6 +89,7 @@ public class PlayerController : MonoBehaviour
             if (Vector3.Distance(nearestTreasure.transform.position, transform.position) <= distanceToTreasure) {
                 Debug.Log(nearestTreasure.tag + " is near");
                 // TODO Load hook scene with junk or treasure
+                GameManager.instance.LoadHookSceneFromLevel(nearestTreasure.tag, nearestTreasure.name);
             }
             else {
                 Debug.Log("Nothing near me, closest: " + Vector3.Distance(nearestTreasure.transform.position, transform.position));
@@ -126,7 +136,7 @@ public class PlayerController : MonoBehaviour
             float buoyancyMovement = Mathf.PingPong(Time.time * buoyancySpeed, maxBuoyancy) - (maxBuoyancy/2);
             float buoyancyRotation = Mathf.PingPong(Time.time * buoyancyRotationSpeed, maxBuoyancyRotation) - (maxBuoyancyRotation/2);
 
-            transform.position = new Vector3(transform.position.x, startingY + buoyancyMovement - ((maxLives-lives) * sinkDistance), transform.position.z);
+            transform.position = new Vector3(transform.position.x, startingY + buoyancyMovement - ((maxLives-Lives) * sinkDistance), transform.position.z);
 
             float angleB = transform.localEulerAngles.z;
             angleB = (angleB > 180) ? angleB - 360 : angleB;
@@ -144,7 +154,7 @@ public class PlayerController : MonoBehaviour
             speed = 0f;
 
             canCollide = false;
-            lives--;
+            Lives--;
             StartCoroutine(Blink(invulnerableDuration));
             StartCoroutine(invulnerable());
         }

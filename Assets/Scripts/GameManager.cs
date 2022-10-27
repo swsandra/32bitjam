@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [Header("Player")]
+    public int maxLives;
     public int lives;
     public float startingY;
+    public Vector3 startingPosition;
     public Vector3 lastPosition;
     GameObject player;
     [Header("Treasures")]
@@ -43,10 +45,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadHookSceneFromLevel(string nextTreasureType) {
+    public void LoadHookSceneFromLevel(string nextTreasureType, string treasureName) {
         lastPosition = player.transform.position;
         startingY = player.GetComponent<PlayerController>().startingY;
         treasureType = nextTreasureType;
+        treasuresCollected.Add(treasureName);
         
         // Dictionary(?)
         if (SceneManager.GetActiveScene().name.Equals(level1)) {
@@ -74,5 +77,12 @@ public class GameManager : MonoBehaviour
             nextScene = level3;
         }
         SceneManager.LoadScene(loading);
+    }
+
+    public void Respawn() {
+        lives = maxLives;
+        lastPosition = startingPosition;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
