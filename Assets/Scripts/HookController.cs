@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HookController : MonoBehaviour
 {
+    [SerializeField] Camera cam;
     [Header("Movement")]
     [SerializeField] float horizontalSpeed = 10f;
     [SerializeField] float verticalSpeed = 10f;
@@ -18,8 +19,8 @@ public class HookController : MonoBehaviour
     [SerializeField] float dropTreasureSeconds = 1f;
     // [SerializeField] float moveUpSeconds = 1f;
     [SerializeField] float blinkRate = .1f;
-    Camera cam;
-    Vector3 screenBounds;
+    // Vector3 screenBounds;
+    Vector3 camBottomLeft, camTopRight;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
     float hookWidth, hookHeight, treasureHeight;
     float hookTranslation;
@@ -33,25 +34,30 @@ public class HookController : MonoBehaviour
     private void Start() {
         startAnimation = true;
         hasTreasure = false;
-        cam = Camera.main;
         camDirection = -1;
-        // Calculate screen limits
-        screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
-        float camXOffset = cam.transform.position.x;
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         hookWidth = renderer.bounds.size.x;
         hookHeight = renderer.bounds.size.y;
-        leftLimit = screenBounds.x+hookWidth;
-        rightLimit = (screenBounds.x*-1)+(camXOffset*2)-hookWidth;
         topLimit = seaTop.position.y-hookHeight;
-        treasureHeight = treasure.GetComponent<Renderer>().bounds.size.y;
-        // bottomLimit = treasure.transform.position.y+(hookHeight*2);
-        initialVerticalSpeed = verticalSpeed;
+
         // Start camera on sea top
         cam.transform.position = new Vector3(cam.transform.position.x, topLimit, cam.transform.position.z);
         // Start hook above camara
         hookAboveCamLimit = topLimit+(hookHeight*2);
         transform.position = new Vector3(transform.position.x, hookAboveCamLimit, transform.position.z);
+
+        // Calculate screen limits
+        // screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
+        camTopRight = CalculateTopRight();
+        camBottomLeft = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.transform.position.z));
+        // float camXOffset = cam.transform.position.x;
+        // leftLimit = screenBounds.x+hookWidth;
+        // rightLimit = (screenBounds.x*-1)+(camXOffset*2)-hookWidth;
+        leftLimit = camBottomLeft.x+hookWidth;
+        rightLimit = camTopRight.x-hookWidth;
+
+        treasureHeight = treasure.GetComponent<Renderer>().bounds.size.y;
+        initialVerticalSpeed = verticalSpeed;
     }
 
     void Update()
@@ -69,9 +75,11 @@ public class HookController : MonoBehaviour
         if (endAnimation){ // Start animation
             hookMovement = Vector3.up * (verticalSpeed/2) * Time.deltaTime;
             transform.position += hookMovement;
-            screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
-            float camYOffset = cam.transform.position.y;
-            if (treasure.transform.position.y >= hookAboveCamLimit || transform.position.y > (screenBounds.y*-1)+(camYOffset*2)) {
+            // screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
+            // float camYOffset = cam.transform.position.y;
+            // if (treasure.transform.position.y >= hookAboveCamLimit || transform.position.y > (screenBounds.y*-1)+(camYOffset*2)) {
+            camTopRight = CalculateTopRight();
+            if (treasure.transform.position.y >= hookAboveCamLimit || transform.position.y > camTopRight.y) {
                 // endAnimation = false;
                 Debug.Log("salio de la pantalla");
                 // TODO: salir
@@ -123,7 +131,7 @@ public class HookController : MonoBehaviour
             hasTreasure = true;
             camDirection = 1;
             other.transform.SetParent(transform);
-            other.transform.localPosition = new Vector3(0, other.transform.localPosition.y, other.transform.localPosition.z);
+            other.transform.position = new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z);
             Treasure treasureComponent = other.GetComponent<Treasure>();
             treasureComponent.isGrounded = false;
             treasureComponent.isHooked = true;
@@ -135,6 +143,10 @@ public class HookController : MonoBehaviour
 
     float CalculateBottomLimit(){
         return treasure.transform.position.y+treasureHeight;
+    }
+
+    Vector3 CalculateTopRight(){
+        return cam.ViewportToWorldPoint(new Vector3(0, 0, cam.transform.position.z));
     }
 
     IEnumerator MakeInvulnerable() {
