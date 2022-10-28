@@ -7099,12 +7099,12 @@ MonoBehaviour:
   treasuresCollected: []
   treasureType: 
   menu: Menu
-  level1: FirstLevel
-  level2: SecondLevel
-  level3: ThirdLevel
-  hook1: FirstHook
-  hook2: SecondHook
-  hook3: ThirdHook
+  level1: Level1
+  level2: Level2
+  level3: Level3
+  hook1: Hook1
+  hook2: Hook2
+  hook3: Hook3
   loading: Loading
   nextScene: 
 --- !u!4 &1856657702
