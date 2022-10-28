@@ -1441,6 +1441,7 @@ MonoBehaviour:
     button.
   - Press T to jump over rocks (It's a lie).
   - You can pick up the treasure while is falling down if you are fast enough.
+  - Did you know that the Red Sea is actually blue?
   boat: {fileID: 324098460}
   boatRotationSpeed: 2
   bar: {fileID: 2037413370}
