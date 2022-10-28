@@ -10202,8 +10202,11 @@ MonoBehaviour:
   maxLives: 3
   lives: 3
   startingY: -5
-  startingPosition: {x: 414, y: -5, z: 827}
   lastPosition: {x: 414, y: -5, z: 827}
+  startingPosition: {x: 414, y: -5, z: 827}
+  startingPosition1: {x: 0, y: 0, z: 0}
+  startingPosition2: {x: 0, y: 0, z: 0}
+  startingPosition3: {x: 0, y: 0, z: 0}
   treasuresCollected: []
   treasureType: 
   menu: 
