@@ -19,6 +19,9 @@ public class HookController : MonoBehaviour
     [SerializeField] float dropTreasureSeconds = 1f;
     // [SerializeField] float moveUpSeconds = 1f;
     [SerializeField] float blinkRate = .1f;
+    [Header("Sounds")]
+    [SerializeField] AudioSource chainSound;
+    [SerializeField] AudioClip hookSound;
     // Vector3 screenBounds;
     Vector3 camBottomLeft, camTopRight;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
@@ -129,6 +132,7 @@ public class HookController : MonoBehaviour
             }
         }else if (other.CompareTag("Treasure") && !hasTreasure){ // Grab treasure
             // StartCoroutine(MakeInvulnerable());
+            AudioSource.PlayClipAtPoint(hookSound,transform.position);
             hasTreasure = true;
             camDirection = 1;
             other.transform.position = new Vector3(transform.position.x, transform.position.y-(treasureHeight/2), other.transform.position.z);
@@ -160,7 +164,7 @@ public class HookController : MonoBehaviour
 
     public void DropTreasure(){
         if (invulnerable || endAnimation) return; // This function can be called from treasure OnTriggerEnter
-
+        AudioSource.PlayClipAtPoint(hookSound,transform.position);
         treasure.transform.SetParent(null);
         hasTreasure = false;
         treasure.GetComponent<Treasure>().isHooked = false;
@@ -172,8 +176,10 @@ public class HookController : MonoBehaviour
 
     IEnumerator DropTreasureCoroutine() {
         treasureDropped = true;
+        chainSound.Stop();
         // Debug.Log("boto el tesoro");
         yield return new WaitForSeconds(dropTreasureSeconds);
+        chainSound.Play();
         treasureDropped = false;
         // Debug.Log("ya lo puede recoger");
     }
@@ -200,11 +206,13 @@ public class HookController : MonoBehaviour
     }
 
     IEnumerator MoveUpCoroutine(){
+        chainSound.Stop();
         verticalSpeed *= 2;
         camDirection = 1;
         // yield return new WaitForSeconds(moveUpSeconds);
         yield return new WaitForSeconds(invulnerableSeconds);
         verticalSpeed = initialVerticalSpeed;
         camDirection = -1;
+        chainSound.Play();
     }
 }
