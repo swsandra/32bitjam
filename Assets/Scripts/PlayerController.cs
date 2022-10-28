@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     [Header("Treasures")]
     [SerializeField] float distanceToTreasure;
     List<GameObject> treasures; 
+    [Header("Sounds")]
+    [SerializeField] AudioSource crashSource;
+    [SerializeField] AudioSource hookSplash;
     
     float startingY;
     CinemachineImpulseSource impulse;
@@ -88,16 +91,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             GameObject nearestTreasure = treasures.OrderBy(t=> Vector3.Distance(transform.position, t.transform.position)).FirstOrDefault();
             if (Vector3.Distance(nearestTreasure.transform.position, transform.position) <= distanceToTreasure) {
-                Debug.Log(nearestTreasure.tag + " is near");
-                // TODO Load hook scene with junk or treasure
-                Debug.Log(nearestTreasure.tag + " " + nearestTreasure.name);
-                GameManager.instance.LoadHookSceneFromLevel(nearestTreasure.tag, nearestTreasure.name);
+                StartCoroutine(loadHookScene(nearestTreasure.tag, nearestTreasure.name));
             }
             else {
                 Debug.Log("Nothing near me, closest: " + Vector3.Distance(nearestTreasure.transform.position, transform.position));
                 // TODO animation(?)
             }
         }
+    }
+
+    IEnumerator loadHookScene(string tag, string name) {
+        hookSplash.Play();
+        yield return new WaitForSeconds(1);
+        Debug.Log(tag + " is near");
+        // TODO Load hook scene with junk or treasure
+        Debug.Log(tag + " " + name);
+        GameManager.instance.LoadHookSceneFromLevel(tag, name);
     }
 
     void shakeCamera() {
@@ -150,6 +159,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if (canCollide && other.gameObject.tag == "Rock") {
             shakeCamera();
+            crashSource.Play();
             Vector3 dir = other.GetContact(0).point - transform.position;
             dir = -dir.normalized;
             rockMovement = dir*collisionForce;
@@ -183,7 +193,6 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(new Vector3(-deathRotationSpeed*Time.fixedDeltaTime, 0, 0), Space.Self);
             yield return new WaitForFixedUpdate();
             deathRotationCounter += deathRotationSpeed*Time.fixedDeltaTime;
-            Debug.Log(deathRotationCounter);
         }
         yield return new WaitForSeconds(1);
         while(true) {
