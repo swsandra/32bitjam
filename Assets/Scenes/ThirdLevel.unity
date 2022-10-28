@@ -4942,7 +4942,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801959160}
-  m_LocalRotation: {x: -0.0000000015350228, y: 0.9839536, z: -0.1784248, w: -0.0000000084651415}
+  m_LocalRotation: {x: 0.0000000015350224, y: 0.9839536, z: -0.1784248, w: 0.00000000846514}
   m_LocalPosition: {x: 2, y: 55, z: 212.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7478,7 +7478,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192688819}
-  m_LocalRotation: {x: -0.0000000015350228, y: 0.9839536, z: -0.1784248, w: -0.0000000084651415}
+  m_LocalRotation: {x: 0.0000000015350224, y: 0.9839536, z: -0.1784248, w: 0.00000000846514}
   m_LocalPosition: {x: 2, y: 55, z: 212.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7629,6 +7629,9 @@ MonoBehaviour:
   collisionForce: 10
   invulnerableDuration: 2
   whirlpoolForce: 0.5
+  distanceToTreasure: 0
+  crashSource: {fileID: 0}
+  hookSplash: {fileID: 0}
 --- !u!1001 &1204158051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14171,7 +14174,7 @@ GameObject:
   - component: {fileID: 919132148710794976}
   m_Layer: 0
   m_Name: PirateBoat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

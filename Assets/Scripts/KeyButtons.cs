@@ -38,7 +38,7 @@ public class KeyButtons : MonoBehaviour
     }
 
     public void SetCurrentButton(GameObject btn){
-        EventSystem.current.SetSelectedGameObject(btn); // TODO: probar haciendo click
+        EventSystem.current.SetSelectedGameObject(btn);
         lastselect = btn;
     }
 
@@ -53,7 +53,6 @@ public class KeyButtons : MonoBehaviour
 
     public void SelectLevel2(GameObject descriptionParent){
         // TODO: deshabilitar si no ha pasado los niveles anteriores
-        // TODO: colocar el boton anterior
         OpenFrame(descriptionParent);
     }
 
@@ -63,7 +62,6 @@ public class KeyButtons : MonoBehaviour
 
     public void SelectLevel3(GameObject descriptionParent){
         // TODO: deshabilitar si no ha pasado los niveles anteriores
-        // TODO: colocar el boton anterior
         OpenFrame(descriptionParent);
     }
 
