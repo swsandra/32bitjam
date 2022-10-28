@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
     public void LoadLevel1() {
         treasuresCollected = new List<string>();
         startingPosition = startingPosition1;
+        lastPosition = startingPosition;
 
         nextScene = level1;
         SceneManager.LoadScene(loading);
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
     public void LoadLevel2() {
         treasuresCollected = new List<string>();
         startingPosition = startingPosition2;
+        lastPosition = startingPosition;
 
         nextScene = level2;
         SceneManager.LoadScene(loading);
@@ -94,6 +96,7 @@ public class GameManager : MonoBehaviour
     public void LoadLevel3() {
         treasuresCollected = new List<string>();
         startingPosition = startingPosition3;
+        lastPosition = startingPosition;
 
         nextScene = level3;
         SceneManager.LoadScene(loading);

@@ -9225,6 +9225,9 @@ MonoBehaviour:
   collisionForce: 10
   invulnerableDuration: 2
   whirlpoolForce: 0.5
+  distanceToTreasure: 0
+  crashSource: {fileID: 0}
+  hookSplash: {fileID: 0}
 --- !u!1001 &1204158051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16306,7 +16309,7 @@ GameObject:
   - component: {fileID: 919132148710794976}
   m_Layer: 0
   m_Name: PirateBoat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
