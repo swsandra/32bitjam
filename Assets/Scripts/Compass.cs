@@ -20,10 +20,22 @@ public class Compass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var nearestTreasure = treasures.OrderBy(t=> Vector3.Distance(player.position, t.transform.position)).FirstOrDefault();
-        dummy.position = nearestTreasure.transform.position - player.position + transform.position;
-        transform.LookAt(dummy.position);
-        transform.eulerAngles += rotate;
-        Debug.DrawLine(transform.position, dummy.position);
+        int i = 0;
+        while (i < treasures.Count)
+        {
+            GameObject t = treasures[i];
+            if (t == null) {
+                treasures.Remove(t);
+                continue;
+            }
+            i++;
+        }
+        if (treasures.Count > 0) {
+            var nearestTreasure = treasures.OrderBy(t=> Vector3.Distance(player.position, t.transform.position)).FirstOrDefault();
+            dummy.position = nearestTreasure.transform.position - player.position + transform.position;
+            transform.LookAt(dummy.position);
+            transform.eulerAngles += rotate;
+            Debug.DrawLine(transform.position, dummy.position);
+        }
     }
 }
