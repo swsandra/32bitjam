@@ -26,6 +26,11 @@ public class UIManager : MonoBehaviour
     }
 
     public void UpdateTreasureCount(){
-        // treasuresText.text = currentTreasures.ToString()+"/"+totalTreasures.ToString();
+        int currentTreasures = GameObject.FindGameObjectsWithTag("Treasure").Length;
+        treasuresText.text = currentTreasures.ToString()+"/"+GameManager.instance.totalTreasures.ToString();
+    }
+
+    private void Update() {
+        UpdateTreasureCount();
     }
 }
