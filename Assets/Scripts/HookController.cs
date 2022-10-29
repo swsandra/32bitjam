@@ -22,6 +22,10 @@ public class HookController : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] AudioSource chainSound;
     [SerializeField] AudioClip hookSound;
+
+    [Header("Objectives")]
+    [SerializeField] GameObject trueTreasure;
+    [SerializeField] GameObject junkTreasure;
     // Vector3 screenBounds;
     Vector3 camBottomLeft, camTopRight;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
@@ -42,6 +46,11 @@ public class HookController : MonoBehaviour
         hookWidth = renderer.bounds.size.x;
         hookHeight = renderer.bounds.size.y;
         topLimit = seaTop.position.y-hookHeight;
+
+        // Select correct objective (junk or treasure)
+        treasure = GameManager.instance.treasureType.Equals("Junk") ? junkTreasure : trueTreasure;
+        treasure.SetActive(true);
+        treasure.tag = GameManager.instance.treasureType;
 
         // Start camera on sea top
         cam.transform.position = new Vector3(cam.transform.position.x, topLimit, cam.transform.position.z);
