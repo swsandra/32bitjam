@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using TMPro;
 
 public class KeyButtons : MonoBehaviour
 {
     [Header("Buttons")]
     [SerializeField] GameObject lastScreenBtn;
+    [SerializeField] GameObject lvl2Btn;
+    [SerializeField] GameObject lvl3Btn;
 
     [Header("Frame")]
     [SerializeField] GameObject descriptionFrame;
@@ -15,6 +19,15 @@ public class KeyButtons : MonoBehaviour
     void Start()
     {
         lastselect = new GameObject();
+        if (lvl2Btn && lvl3Btn){
+            if (!GameManager.instance.completedLevel2) {
+                DisableLvlBtn(lvl3Btn);
+            }
+
+            if (!GameManager.instance.completedLevel1) {
+                DisableLvlBtn(lvl2Btn);
+            }
+        }
     }
 
     void Update()
@@ -50,18 +63,8 @@ public class KeyButtons : MonoBehaviour
         GameManager.instance.LoadLevel1();
     }
 
-    public void SelectLevel2(GameObject descriptionParent){
-        // TODO: deshabilitar si no ha pasado los niveles anteriores
-        OpenFrame(descriptionParent);
-    }
-
     public void LoadLevel2(){
         GameManager.instance.LoadLevel2();
-    }
-
-    public void SelectLevel3(GameObject descriptionParent){
-        // TODO: deshabilitar si no ha pasado los niveles anteriores
-        OpenFrame(descriptionParent);
     }
 
     public void LoadLevel3(){
@@ -78,6 +81,29 @@ public class KeyButtons : MonoBehaviour
 
     public void Quit(){
         Application.Quit();
+    }
+
+    void DisableLvlBtn(GameObject btn){
+        Button btnScript = btn.GetComponent<Button>();
+        Button btnAbove = btnScript.navigation.selectOnUp.GetComponent<Button>();
+        Button btnBelow = btnScript.navigation.selectOnDown.GetComponent<Button>();
+
+        // Disable button
+        btnScript.interactable = false;
+        btn.GetComponentInChildren<TMP_Text>().faceColor = new Color32(0, 0, 0, 128);
+
+        // Change button's navigation
+        Navigation newNavAbove = new Navigation();
+        newNavAbove.mode = Navigation.Mode.Explicit;
+        newNavAbove.selectOnUp = btnAbove.navigation.selectOnUp;
+        newNavAbove.selectOnDown = btnBelow;
+        btnAbove.navigation = newNavAbove;
+
+        Navigation newNavBelow = new Navigation();
+        newNavBelow.mode = Navigation.Mode.Explicit;
+        newNavBelow.selectOnUp = btnAbove;
+        newNavBelow.selectOnDown = btnBelow.navigation.selectOnDown;
+        btnBelow.navigation = newNavBelow;
     }
 
 }
