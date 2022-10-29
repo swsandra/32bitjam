@@ -30,7 +30,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLives(){
         if (GameManager.instance.maxLives == GameManager.instance.lives) return;
-        hearts[GameManager.instance.lives].sprite = emptyHeart;
+        int i = GameManager.instance.maxLives-1;
+        while (i >= GameManager.instance.lives){
+            hearts[i].sprite = emptyHeart;
+            i--;
+        }
     }
 
     public void UpdateTreasureCount(){
