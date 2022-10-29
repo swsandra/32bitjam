@@ -240,7 +240,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -285,7 +285,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 141099868}
         m_TargetAssemblyTypeName: KeyButtons, Assembly-CSharp
-        m_MethodName: SelectLevel2
+        m_MethodName: OpenFrame
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1604948985}
@@ -1087,8 +1087,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28be1f197316c894a85497b8876a8aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playBtn: {fileID: 0}
   lastScreenBtn: {fileID: 0}
+  lvl2Btn: {fileID: 29530714}
+  lvl3Btn: {fileID: 1637737098}
   descriptionFrame: {fileID: 338643563}
 --- !u!1 &147257839
 GameObject:
@@ -1542,7 +1543,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6229,7 +6230,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6274,7 +6275,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 141099868}
         m_TargetAssemblyTypeName: KeyButtons, Assembly-CSharp
-        m_MethodName: SelectLevel3
+        m_MethodName: OpenFrame
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 291238776}
@@ -6321,9 +6322,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637737098}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1424395049}
@@ -6332,7 +6333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -25, y: 125}
+  m_AnchoredPosition: {x: -24.99997, y: 125}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1637737102
@@ -6387,7 +6388,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6874,7 +6875,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -7088,6 +7089,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a96571657815041a335916d530b0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completedLevel1: 0
+  completedLevel2: 0
+  completedLevel3: 0
   maxLives: 3
   lives: 3
   startingY: -5
@@ -7098,6 +7102,7 @@ MonoBehaviour:
   startingPosition3: {x: 2, y: -5, z: 132}
   treasuresCollected: []
   treasureType: 
+  totalTreasures: 0
   menu: Menu
   level1: Level1
   level2: Level2
