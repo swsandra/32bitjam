@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera vCam;
     [SerializeField] float deathRotationSpeed;
     [SerializeField] float deathSinkSpeed;
+    [SerializeField] float deathSinkDistance;
     [Header("Movement")]
     [SerializeField] float accelerationSpeed;
     [SerializeField] float maxSpeed;
@@ -92,7 +93,8 @@ public class PlayerController : MonoBehaviour
             }
             i++;
         }
-        if (treasures.Count == 0) {
+        if (!dead && treasures.Count == 0) {
+            dead = true;    // To stop everything, not actually dead
             Win();
         }
 
@@ -173,7 +175,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if (canCollide && other.gameObject.tag == "Rock") {
+        if (!dead && canCollide && other.gameObject.tag == "Rock") {
             shakeCamera();
             crashSource.Play();
             Vector3 dir = other.GetContact(0).point - transform.position;
@@ -210,7 +212,7 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator Death() {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(invulnerableDuration);
         while (deathRotationCounter < 90) {
             transform.Rotate(new Vector3(-deathRotationSpeed*Time.fixedDeltaTime, 0, 0), Space.Self);
             yield return new WaitForFixedUpdate();
@@ -218,12 +220,12 @@ public class PlayerController : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
 
-        UIManager.instance.ShowGameOverScreen();
-
-        while(true) {
+        while(transform.position.y > startingY - deathSinkDistance) {
             transform.position -= new Vector3(0, deathSinkSpeed*Time.fixedDeltaTime, 0);
             yield return new WaitForFixedUpdate();
         }
+
+        UIManager.instance.ShowGameOverScreen();
     }
 
     IEnumerator invulnerable() {

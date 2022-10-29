@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         treasuresCollected.Clear();
         startingPosition = startingPosition1;
         lastPosition = startingPosition;
+        lives = maxLives;
 
         nextScene = level1;
         SceneManager.LoadScene(loading);
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
         treasuresCollected.Clear();
         startingPosition = startingPosition2;
         lastPosition = startingPosition;
+        lives = maxLives;
 
         nextScene = level2;
         SceneManager.LoadScene(loading);
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour
         treasuresCollected.Clear();
         startingPosition = startingPosition3;
         lastPosition = startingPosition;
+        lives = maxLives;
 
         nextScene = level3;
         SceneManager.LoadScene(loading);
@@ -126,15 +129,12 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel() {
         if (SceneManager.GetActiveScene().name == level1) {
             completedLevel1 = true;
-            // LoadMenu();
         }
         else if (SceneManager.GetActiveScene().name == level2) {
             completedLevel2 = true;
-            // LoadMenu();
         }
         else if (SceneManager.GetActiveScene().name == level2) {
             completedLevel3 = true;
-            // LoadMenu();
         }
         else
             Debug.Log("Wtf called this?");
