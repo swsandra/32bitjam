@@ -5180,7 +5180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb4f82df33b4044495addef9442457e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 2
+  spawnRate: 0.5
   fishPrefabs:
   - {fileID: 7613510534521721234, guid: 569548afa0232cb4b9a8eb3fe0c00c68, type: 3}
   - {fileID: 3454752740537489036, guid: 6e23fbcb123197a4aa3e25d0404aeb29, type: 3}
