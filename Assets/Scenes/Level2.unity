@@ -2553,7 +2553,7 @@ GameObject:
   - component: {fileID: 205290517}
   - component: {fileID: 205290518}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Treasure
   m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6393,7 +6393,7 @@ GameObject:
   - component: {fileID: 702913498}
   - component: {fileID: 702913499}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Junk1
   m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15869,7 +15869,7 @@ GameObject:
   - component: {fileID: 1747362551}
   - component: {fileID: 1747362552}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Junk0
   m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18573,7 +18573,7 @@ GameObject:
   - component: {fileID: 1956612314}
   - component: {fileID: 1956612315}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Junk3
   m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19310,7 +19310,7 @@ GameObject:
   - component: {fileID: 2007878261}
   - component: {fileID: 2007878262}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Junk2
   m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
