@@ -12,7 +12,7 @@ public class Treasure : MonoBehaviour
     void Start()
     {
         isGrounded = false;
-        this.tag = GameManager.instance.treasureType;
+        // this.tag = GameManager.instance.treasureType;
     }
 
     void Update()
