@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public bool completedLevel1 = false;
+    public bool completedLevel2 = false;
+    public bool completedLevel3 = false;
     [Header("Player")]
     public int maxLives;
     public int lives;
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
     [Header("Treasures")]
     public List<string> treasuresCollected;
     public string treasureType;
+    public int totalTreasures;
     [Header("Scenes")]
     [SerializeField] string menu;
     [SerializeField] string level1;
@@ -39,6 +43,9 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+    }
+
+    private void Update() {
     }
 
     public void LoadHookSceneFromLevel(string nextTreasureType, string treasureName) {
@@ -76,7 +83,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadLevel1() {
-        treasuresCollected = new List<string>();
+        treasuresCollected.Clear();
         startingPosition = startingPosition1;
         lastPosition = startingPosition;
 
@@ -85,7 +92,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadLevel2() {
-        treasuresCollected = new List<string>();
+        treasuresCollected.Clear();
         startingPosition = startingPosition2;
         lastPosition = startingPosition;
 
@@ -94,11 +101,18 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoadLevel3() {
-        treasuresCollected = new List<string>();
+        treasuresCollected.Clear();
         startingPosition = startingPosition3;
         lastPosition = startingPosition;
 
         nextScene = level3;
+        SceneManager.LoadScene(loading);
+    }
+
+    public void LoadMenu() {
+        nextScene = menu;
+        treasuresCollected.Clear();
+
         SceneManager.LoadScene(loading);
     }
 
@@ -107,6 +121,23 @@ public class GameManager : MonoBehaviour
         lastPosition = startingPosition;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void CompleteLevel() {
+        if (SceneManager.GetActiveScene().name == level1) {
+            completedLevel1 = true;
+            LoadMenu();
+        }
+        else if (SceneManager.GetActiveScene().name == level2) {
+            completedLevel2 = true;
+            LoadMenu();
+        }
+        else if (SceneManager.GetActiveScene().name == level2) {
+            completedLevel3 = true;
+            LoadMenu();
+        }
+        else
+            Debug.Log("Wtf called this?");
     }
 
     void OnEnable()
@@ -125,6 +156,10 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name.Equals(level1) || scene.name.Equals(level2) || scene.name.Equals(level3)) {
             player = GameObject.FindGameObjectWithTag("Player");
+            if (scene.name.Equals(level3))
+                totalTreasures = 3;
+            else
+                totalTreasures = 1;
         }
     }
 }

@@ -80,6 +80,21 @@ public class PlayerController : MonoBehaviour
     {
         movementVertical = Input.GetAxis("Vertical");
         movementHorizontal = Input.GetAxis("Horizontal");
+
+        int i = 0;
+        while (i < treasures.Count)
+        {
+            GameObject t = treasures[i];
+            if (t == null) {
+                treasures.Remove(t);
+                continue;
+            }
+            i++;
+        }
+        if (treasures.Count == 0) {
+            Win();
+        }
+
         if (Lives <= 0) {
             shakeCamera();
             dead = true;
@@ -185,6 +200,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Whirlpool") {
             whirlpoolMovement = Vector3.zero;
         }
+    }
+
+    private void Win() {
+        // TODO: Do something (move boat in celebration, show celebration text, idk)
+        
+        GameManager.instance.CompleteLevel();
     }
 
     IEnumerator Death() {
