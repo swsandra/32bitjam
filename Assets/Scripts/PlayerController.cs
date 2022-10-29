@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
             Win();
         }
 
-        if (Lives <= 0) {
+        if (Lives <= 0 && !dead) {
             shakeCamera();
             dead = true;
             canCollide = false;
