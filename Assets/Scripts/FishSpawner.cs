@@ -15,10 +15,12 @@ public class FishSpawner : MonoBehaviour
     [SerializeField] float fishSpeed = 1;
 
     Transform[] spawnPositions;
+    int nextPosition, lastPosition;
 
     void Start()
     {
         spawnPositions = System.Array.FindAll(GetComponentsInChildren<Transform>(), child => child != this.transform);
+        lastPosition = -1;
         StartCoroutine(SpawnFish());
     }
 
@@ -27,7 +29,12 @@ public class FishSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnRate);
             GameObject fishPrefab = fishPrefabs[Random.Range(0, fishPrefabs.Length)];
-            Transform randomSpawnPoint = spawnPositions[Random.Range(0, spawnPositions.Length)];
+            nextPosition = Random.Range(0, spawnPositions.Length);
+            while (lastPosition == nextPosition){
+                nextPosition = Random.Range(0, spawnPositions.Length);
+            }
+            Transform randomSpawnPoint = spawnPositions[nextPosition];
+            lastPosition = nextPosition;
             int direction = randomSpawnPoint.transform.position.x > transform.position.x ? -1 : 1;
             GameObject fish = Instantiate(fishPrefab, randomSpawnPoint.position, Quaternion.identity);
             if (direction == 1) {
