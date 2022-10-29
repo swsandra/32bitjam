@@ -8,8 +8,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField] GameObject descriptionFrame;
-
     [Header("Levels UI")]
     [SerializeField] TMP_Text treasuresText;
     [SerializeField] Image[] hearts;
