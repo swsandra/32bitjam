@@ -126,15 +126,15 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel() {
         if (SceneManager.GetActiveScene().name == level1) {
             completedLevel1 = true;
-            LoadMenu();
+            // LoadMenu();
         }
         else if (SceneManager.GetActiveScene().name == level2) {
             completedLevel2 = true;
-            LoadMenu();
+            // LoadMenu();
         }
         else if (SceneManager.GetActiveScene().name == level2) {
             completedLevel3 = true;
-            LoadMenu();
+            // LoadMenu();
         }
         else
             Debug.Log("Wtf called this?");

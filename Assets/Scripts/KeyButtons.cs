@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class KeyButtons : MonoBehaviour
 {
     [Header("Buttons")]
-    [SerializeField] GameObject playBtn;
     [SerializeField] GameObject lastScreenBtn;
 
     [Header("Frame")]
@@ -67,6 +66,14 @@ public class KeyButtons : MonoBehaviour
 
     public void LoadLevel3(){
         GameManager.instance.LoadLevel3();
+    }
+
+    public void Menu(){
+        GameManager.instance.LoadMenu();
+    }
+
+    public void Respawn(){
+        GameManager.instance.Respawn();
     }
 
     public void Quit(){

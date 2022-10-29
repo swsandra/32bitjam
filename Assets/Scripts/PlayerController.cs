@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
 
     private void Win() {
         // TODO: Do something (move boat in celebration, show celebration text, idk)
-        
+        UIManager.instance.ShowWinScreen();
         GameManager.instance.CompleteLevel();
     }
 
@@ -217,6 +217,9 @@ public class PlayerController : MonoBehaviour
             deathRotationCounter += deathRotationSpeed*Time.fixedDeltaTime;
         }
         yield return new WaitForSeconds(1);
+
+        UIManager.instance.ShowGameOverScreen();
+
         while(true) {
             transform.position -= new Vector3(0, deathSinkSpeed*Time.fixedDeltaTime, 0);
             yield return new WaitForFixedUpdate();
