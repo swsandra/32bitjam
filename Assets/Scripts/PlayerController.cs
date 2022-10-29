@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         set {
             lives = value;
             GameManager.instance.lives = lives;
+            UIManager.instance.UpdateLives();
         }
     }
 
