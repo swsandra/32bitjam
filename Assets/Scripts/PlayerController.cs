@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
             }
             i++;
         }
-        if (!dead && treasures.Count == 0) {
+        if (!dead && treasures.Where(t => t.tag.Equals("Treasure")).Count() == 0) {
             dead = true;    // To stop everything, not actually dead
             Win();
         }
@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !dead) {
             GameObject nearestTreasure = treasures.OrderBy(t=> Vector3.Distance(transform.position, t.transform.position)).FirstOrDefault();
             if (Vector3.Distance(nearestTreasure.transform.position, transform.position) <= distanceToTreasure) {
+                dead = true;    // To stop everything, not actually dead
                 StartCoroutine(loadHookScene(nearestTreasure.tag, nearestTreasure.name));
             }
             else {
