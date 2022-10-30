@@ -2212,16 +2212,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 3
-  lives: 1
-  sinkDistance: 0
+  lives: 3
+  sinkDistance: 1
   blinkRate: 0.1
   vCam: {fileID: 801959161}
   deathRotationSpeed: 50
   deathSinkSpeed: 10
   deathSinkDistance: 10
-  accelerationSpeed: 5
-  maxSpeed: 30
-  rotationSpeed: 1
+  accelerationSpeed: 3
+  maxSpeed: 40
+  rotationSpeed: 0.7
   tiltSpeed: 1.2
   maxRotationTilt: 20
   buoyancySpeed: 1

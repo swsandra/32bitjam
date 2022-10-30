@@ -1126,7 +1126,7 @@ Transform:
   - {fileID: 347687153}
   - {fileID: 418762986}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131265695
 GameObject:
@@ -6306,7 +6306,7 @@ RectTransform:
   - {fileID: 1866561628}
   - {fileID: 220250878}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7867,15 +7867,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLives: 3
   lives: 1
-  sinkDistance: 0
+  sinkDistance: 1
   blinkRate: 0.1
   vCam: {fileID: 801959161}
   deathRotationSpeed: 50
   deathSinkSpeed: 10
   deathSinkDistance: 10
-  accelerationSpeed: 5
-  maxSpeed: 30
-  rotationSpeed: 1
+  accelerationSpeed: 3
+  maxSpeed: 40
+  rotationSpeed: 0.7
   tiltSpeed: 1.2
   maxRotationTilt: 20
   buoyancySpeed: 1
@@ -11643,7 +11643,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1773835451
 MonoBehaviour:
@@ -12201,74 +12201,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6eaadf9fb7ae44893cc5ccc15eb315, type: 3}
---- !u!1 &1856657700
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1856657702}
-  - component: {fileID: 1856657701}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1856657701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856657700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a96571657815041a335916d530b0eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  completedLevel1: 0
-  completedLevel2: 0
-  completedLevel3: 0
-  maxLives: 3
-  lives: 3
-  startingY: -5
-  lastPosition: {x: 414, y: -5, z: 827}
-  startingPosition: {x: 414, y: -5, z: 827}
-  startingPosition1: {x: 412, y: -5, z: 827}
-  startingPosition2: {x: 0, y: 0, z: 0}
-  startingPosition3: {x: 0, y: 0, z: 0}
-  treasuresCollected: []
-  treasureType: 
-  totalTreasures: 0
-  menu: 
-  level1: FirstLevel
-  level2: 
-  level3: 
-  hook1: FirstHook
-  hook2: 
-  hook3: 
-  loading: Loading
-  nextScene: 
-  musicTimer: 0
---- !u!4 &1856657702
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856657700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1866561627
 GameObject:
   m_ObjectHideFlags: 0
