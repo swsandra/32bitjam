@@ -8122,7 +8122,7 @@ MonoBehaviour:
   invulnerableDuration: 2
   whirlpoolForce: 0.5
   distanceModifier: 0
-  distanceToTreasure: 30
+  distanceToTreasure: 35
   crashSource: {fileID: 919132148710794978}
   hookSplash: {fileID: 919132148710794977}
   song: {fileID: 919132148710794981}
