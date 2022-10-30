@@ -17,7 +17,6 @@ public class HookController : MonoBehaviour
     [Header("Time intervals")]
     [SerializeField] float invulnerableSeconds = 1.5f;
     [SerializeField] float dropTreasureSeconds = 1f;
-    // [SerializeField] float moveUpSeconds = 1f;
     [SerializeField] float blinkRate = .1f;
     [Header("Audio")]
     [SerializeField] AudioSource chainSound;
@@ -27,7 +26,6 @@ public class HookController : MonoBehaviour
     [Header("Objectives")]
     [SerializeField] GameObject trueTreasure;
     [SerializeField] GameObject junkTreasure;
-    // Vector3 screenBounds;
     Vector3 camBottomLeft, camTopRight;
     float leftLimit, rightLimit, topLimit, bottomLimit, hookAboveCamLimit;
     float hookWidth, hookHeight, treasureHeight;
@@ -61,12 +59,8 @@ public class HookController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, hookAboveCamLimit, transform.position.z);
 
         // Calculate screen limits
-        // screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
         camTopRight = CalculateTopRight();
         camBottomLeft = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.transform.position.z));
-        // float camXOffset = cam.transform.position.x;
-        // leftLimit = screenBounds.x+hookWidth;
-        // rightLimit = (screenBounds.x*-1)+(camXOffset*2)-hookWidth;
         leftLimit = camBottomLeft.x+hookWidth;
         rightLimit = camTopRight.x-hookWidth;
 
@@ -89,15 +83,9 @@ public class HookController : MonoBehaviour
         if (endAnimation){ // Start animation
             hookMovement = Vector3.up * (verticalSpeed/2) * Time.deltaTime;
             transform.position += hookMovement;
-            // screenBounds = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, cam.transform.position.z));
-            // float camYOffset = cam.transform.position.y;
-            // if (treasure.transform.position.y >= hookAboveCamLimit || transform.position.y > (screenBounds.y*-1)+(camYOffset*2)) {
             camTopRight = CalculateTopRight();
             if (treasure.transform.position.y >= hookAboveCamLimit || transform.position.y > camTopRight.y) {
-                // endAnimation = false;
-                Debug.Log("salio de la pantalla");
                 GameManager.instance.musicTimer = song.time;
-                // load level scene
                 GameManager.instance.LoadLevelSceneFromHook();
             }
             return;
@@ -106,7 +94,6 @@ public class HookController : MonoBehaviour
         bottomLimit = CalculateBottomLimit(); // Treasure can change position
 
         hookTranslation = Input.GetAxisRaw("Horizontal");
-        // camTranslation = Input.GetAxisRaw("Vertical");
 
         hookMovement = new Vector3(hookTranslation, 0, 0).normalized * horizontalSpeed * Time.deltaTime;
         Vector3 camMovement = new Vector3(0, camDirection, 0).normalized * verticalSpeed * Time.deltaTime;
@@ -128,7 +115,6 @@ public class HookController : MonoBehaviour
 
         if (cam.transform.position.y >= topLimit && hasTreasure){
             endAnimation = true;
-            // Debug.Log("Gano");
         }
     }
 
@@ -143,7 +129,6 @@ public class HookController : MonoBehaviour
                 StartCoroutine(Blink());
             }
         }else if (other.CompareTag("Treasure") && !hasTreasure){ // Grab treasure
-            // StartCoroutine(MakeInvulnerable());
             AudioSource.PlayClipAtPoint(hookSound,transform.position);
             hasTreasure = true;
             camDirection = 1;
@@ -153,7 +138,6 @@ public class HookController : MonoBehaviour
             treasureComponent.isGrounded = false;
             treasureComponent.isHooked = true;
         }else if (other.CompareTag("Junk")){ // Treasure was junk
-            Debug.Log("toco el tesoro basura");
             endAnimation = true;
         }
     }
@@ -168,10 +152,8 @@ public class HookController : MonoBehaviour
 
     IEnumerator MakeInvulnerable() {
         invulnerable = true;
-        // Debug.Log("invulnerable");
         yield return new WaitForSeconds(invulnerableSeconds);
         invulnerable = false;
-        // Debug.Log("ya no es invulnerable");
     }
 
     public void DropTreasure(){
@@ -189,11 +171,9 @@ public class HookController : MonoBehaviour
     IEnumerator DropTreasureCoroutine() {
         treasureDropped = true;
         chainSound.Stop();
-        // Debug.Log("boto el tesoro");
         yield return new WaitForSeconds(dropTreasureSeconds);
         chainSound.Play();
         treasureDropped = false;
-        // Debug.Log("ya lo puede recoger");
     }
 
     IEnumerator Blink(){
@@ -221,7 +201,6 @@ public class HookController : MonoBehaviour
         chainSound.Stop();
         verticalSpeed *= 2;
         camDirection = 1;
-        // yield return new WaitForSeconds(moveUpSeconds);
         yield return new WaitForSeconds(invulnerableSeconds);
         verticalSpeed = initialVerticalSpeed;
         camDirection = -1;
