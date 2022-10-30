@@ -216,8 +216,8 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator Death() {
-        sinking.Play();
         yield return new WaitForSeconds(invulnerableDuration);
+        sinking.Play();
         while (deathRotationCounter < 90) {
             transform.Rotate(new Vector3(-deathRotationSpeed*Time.fixedDeltaTime, 0, 0), Space.Self);
             yield return new WaitForFixedUpdate();
@@ -230,6 +230,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
+        sinking.Stop();
         UIManager.instance.ShowGameOverScreen();
     }
 
