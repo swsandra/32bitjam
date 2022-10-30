@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] string hook3;
     [SerializeField] string loading;
     public string nextScene;
-
+    [Header("Music")]
+    public float musicTimer = 0;
 
     private void Awake() {
         if (instance != null && instance != this)
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         startingPosition = startingPosition1;
         lastPosition = startingPosition;
         lives = maxLives;
+        musicTimer = 0;
 
         nextScene = level1;
         SceneManager.LoadScene(loading);
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
         startingPosition = startingPosition2;
         lastPosition = startingPosition;
         lives = maxLives;
+        musicTimer = 0;
 
         nextScene = level2;
         SceneManager.LoadScene(loading);
@@ -107,6 +110,7 @@ public class GameManager : MonoBehaviour
         startingPosition = startingPosition3;
         lastPosition = startingPosition;
         lives = maxLives;
+        musicTimer = 0;
 
         nextScene = level3;
         SceneManager.LoadScene(loading);

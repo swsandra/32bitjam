@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] AudioSource crashSource;
     [SerializeField] AudioSource hookSplash;
+    [SerializeField] AudioSource song;
+    [SerializeField] AudioSource sinking;
     
     float startingY;
     CinemachineImpulseSource impulse;
@@ -62,7 +64,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour
         maxLives = GameManager.instance.maxLives;
         Lives = GameManager.instance.lives;
         deathRotationCounter = 0f;
+        song.time = GameManager.instance.musicTimer;
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         treasures = GameObject.FindGameObjectsWithTag("Treasure").ToList();
         treasures.AddRange(GameObject.FindGameObjectsWithTag("Junk").ToList());
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator loadHookScene(string tag, string name) {
         hookSplash.Play();
         yield return new WaitForSeconds(1);
+        GameManager.instance.musicTimer = song.time;
         Debug.Log(tag + " is near");
         // TODO Load hook scene with junk or treasure
         Debug.Log(tag + " " + name);
@@ -213,6 +216,7 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator Death() {
+        sinking.Play();
         yield return new WaitForSeconds(invulnerableDuration);
         while (deathRotationCounter < 90) {
             transform.Rotate(new Vector3(-deathRotationSpeed*Time.fixedDeltaTime, 0, 0), Space.Self);

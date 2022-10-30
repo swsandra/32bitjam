@@ -19,9 +19,10 @@ public class HookController : MonoBehaviour
     [SerializeField] float dropTreasureSeconds = 1f;
     // [SerializeField] float moveUpSeconds = 1f;
     [SerializeField] float blinkRate = .1f;
-    [Header("Sounds")]
+    [Header("Audio")]
     [SerializeField] AudioSource chainSound;
     [SerializeField] AudioClip hookSound;
+    [SerializeField] AudioSource song;
 
     [Header("Objectives")]
     [SerializeField] GameObject trueTreasure;
@@ -43,6 +44,7 @@ public class HookController : MonoBehaviour
         hasTreasure = false;
         camDirection = -1;
         MeshRenderer renderer = GetComponent<MeshRenderer>();
+        song.time = GameManager.instance.musicTimer;
         hookWidth = renderer.bounds.size.x;
         hookHeight = renderer.bounds.size.y;
         topLimit = seaTop.position.y-hookHeight;
@@ -94,6 +96,7 @@ public class HookController : MonoBehaviour
             if (treasure.transform.position.y >= hookAboveCamLimit || transform.position.y > camTopRight.y) {
                 // endAnimation = false;
                 Debug.Log("salio de la pantalla");
+                GameManager.instance.musicTimer = song.time;
                 // load level scene
                 GameManager.instance.LoadLevelSceneFromHook();
             }
