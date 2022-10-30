@@ -90,7 +90,8 @@ public class KeyButtons : MonoBehaviour
 
         // Disable button
         btnScript.interactable = false;
-        btn.GetComponentInChildren<TMP_Text>().faceColor = new Color32(0, 0, 0, 128);
+        Color32 textColor = btn.GetComponentInChildren<TMP_Text>().faceColor;
+        btn.GetComponentInChildren<TMP_Text>().faceColor = new Color32(textColor.r, textColor.g, textColor.b, 128);
 
         // Change button's navigation
         Navigation newNavAbove = new Navigation();
