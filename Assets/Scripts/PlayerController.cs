@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource hookSplash;
     [SerializeField] AudioSource song;
     [SerializeField] AudioSource sinking;
+    [SerializeField] AudioSource ghost;
     
     float startingY;
     CinemachineImpulseSource impulse;
@@ -189,6 +190,20 @@ public class PlayerController : MonoBehaviour
 
             canCollide = false;
             Lives--;
+            StartCoroutine(Blink(invulnerableDuration));
+            StartCoroutine(invulnerable());
+        }
+
+        if (!dead && canCollide && other.gameObject.tag == "Ghost") {
+            shakeCamera();
+            ghost.Play();
+            Vector3 dir = other.GetContact(0).point - transform.position;
+            dir = -dir.normalized;
+            rockMovement = dir*collisionForce;
+            speed = 0f;
+
+            canCollide = false;
+            Lives = 0;
             StartCoroutine(Blink(invulnerableDuration));
             StartCoroutine(invulnerable());
         }

@@ -10,6 +10,7 @@ TagManager:
   - Whirlpool
   - Obstacle
   - Junk
+  - Ghost
   layers:
   - Default
   - TransparentFX
