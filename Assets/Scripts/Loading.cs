@@ -75,7 +75,7 @@ public class Loading : MonoBehaviour
     void Update()
     {
         bar.localScale += new Vector3(Time.deltaTime * barFillingSpeed, 0, 0);
-        boat.Rotate(new Vector3(0,boatRotationSpeed,0));
+        boat.Rotate(new Vector3(0, boatRotationSpeed * Time.deltaTime, 0));
         if (bar.localScale.x >= maxBarSize) {
             SceneManager.LoadScene(sceneToLoad);
         }
