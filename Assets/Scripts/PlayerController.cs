@@ -117,10 +117,6 @@ public class PlayerController : MonoBehaviour
                 dead = true;    // To stop everything, not actually dead
                 StartCoroutine(loadHookScene(nearestTreasure.tag, nearestTreasure.name));
             }
-            else {
-                Debug.Log("Nothing near me, closest: " + Vector3.Distance(nearestTreasure.transform.position, transform.position));
-                // TODO animation(?)
-            }
         }
     }
 
@@ -128,9 +124,6 @@ public class PlayerController : MonoBehaviour
         hookSplash.Play();
         yield return new WaitForSeconds(1);
         GameManager.instance.musicTimer = song.time;
-        Debug.Log(tag + " is near");
-        // TODO Load hook scene with junk or treasure
-        Debug.Log(tag + " " + name);
         GameManager.instance.LoadHookSceneFromLevel(tag, name);
     }
 

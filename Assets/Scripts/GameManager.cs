@@ -140,8 +140,6 @@ public class GameManager : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == level2) {
             completedLevel3 = true;
         }
-        else
-            Debug.Log("Wtf called this?");
     }
 
     void OnEnable()

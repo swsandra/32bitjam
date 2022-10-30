@@ -35,7 +35,6 @@ public class Compass : MonoBehaviour
             dummy.position = nearestTreasure.transform.position - player.position + transform.position;
             transform.LookAt(dummy.position);
             transform.eulerAngles += rotate;
-            Debug.DrawLine(transform.position, dummy.position);
         }
     }
 }
