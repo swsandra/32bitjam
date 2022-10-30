@@ -3319,6 +3319,8 @@ MonoBehaviour:
   crashSource: {fileID: 0}
   hookSplash: {fileID: 0}
   song: {fileID: 0}
+  sinking: {fileID: 0}
+  ghost: {fileID: 0}
 --- !u!1 &1209393753
 GameObject:
   m_ObjectHideFlags: 0
@@ -6029,7 +6031,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8835e8c44a9f0704b92dfa01dd7eb075, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
