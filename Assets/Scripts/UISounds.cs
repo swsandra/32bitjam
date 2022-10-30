@@ -15,6 +15,7 @@ public class UISounds : MonoBehaviour, ISubmitHandler,  ISelectHandler
 
     public void OnSelect (BaseEventData eventData) 
     {
-        Source.Play();
+        if(!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
+            Source.Play();
     }
 }
