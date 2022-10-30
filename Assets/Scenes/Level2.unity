@@ -1516,6 +1516,7 @@ MonoBehaviour:
   collisionForce: 10
   invulnerableDuration: 2
   whirlpoolForce: 0.5
+  distanceModifier: 1
   distanceToTreasure: 30
   crashSource: {fileID: 75818016}
   hookSplash: {fileID: 75818015}

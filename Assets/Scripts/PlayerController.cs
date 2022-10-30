@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float invulnerableDuration;
     [Header("Whirlpool")]
     [SerializeField] float whirlpoolForce;
+    [SerializeField] float distanceModifier = 0f;
     [Header("Treasures")]
     [SerializeField] float distanceToTreasure;
     List<GameObject> treasures; 
@@ -214,7 +215,7 @@ public class PlayerController : MonoBehaviour
             Vector3 dir = other.transform.position - transform.position;
             float distance = dir.magnitude;
             dir = dir/10 + Vector3.Cross(dir, Vector3.up);
-            whirlpoolMovement = dir.normalized * distance * whirlpoolForce;
+            whirlpoolMovement = dir.normalized * whirlpoolForce * (distance*distanceModifier);
         }
     }
 
