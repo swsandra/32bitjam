@@ -1431,13 +1431,13 @@ MonoBehaviour:
   tip: {fileID: 1621689349}
   tipsList:
   - Whirlpools are really dangerous if there are rocks nearby or inside.
-  - This loading screen does nothing actually.
+  - This loading screen actually does nothing.
   - Yamero.
   - There is a legend of a ghost ship that stalks other ships at night.
   - Pirates are bad people, unless you're watching One Piece.
-  - Sometimes there are not treasures in the deep of the ocean but junk.
+  - Sometimes you'll find rocks instead of treasures deep down in the sea.
   - Rocks are not your friends.
-  - You can move using the moving buttons, also you can interact using the interact
+  - You can move using the moving buttons, you can also interact using the interact
     button.
   - Press T to jump over rocks (It's a lie).
   - You can pick up the treasure while is falling down if you are fast enough.
