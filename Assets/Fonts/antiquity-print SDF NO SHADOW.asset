@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: antiquity-print SDF
+  m_Name: antiquity-print SDF NO SHADOW
   m_EditorClassIdentifier: 
-  hashCode: -1650082625
+  hashCode: 1053823544
   material: {fileID: 8860940889349979509}
-  materialHashCode: 1590904383
+  materialHashCode: -239837928
   m_Version: 1.1.0
   m_SourceFontFileGUID: 217fd2b60de8b3b4e885b7fe9766c7c8
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 217fd2b60de8b3b4e885b7fe9766c7c8, type: 3}
@@ -2443,8 +2443,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: antiquity-print SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ValidKeywords:
-  - UNDERLAY_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -2521,8 +2520,8 @@ Material:
     - _TextureHeight: 512
     - _TextureWidth: 512
     - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0.84
-    - _UnderlayOffsetY: -0.68
+    - _UnderlayOffsetX: 1
+    - _UnderlayOffsetY: -1
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0

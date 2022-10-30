@@ -3914,8 +3914,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4834,8 +4834,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278249727
+  m_fontColor: {r: 1, g: 0.9098039, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5335,8 +5335,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6949,7 +6949,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801959160}
-  m_LocalRotation: {x: -0.0000000015350228, y: 0.9839536, z: -0.1784248, w: -0.0000000084651415}
+  m_LocalRotation: {x: 0.0000000015350224, y: 0.9839536, z: -0.1784248, w: 0.00000000846514}
   m_LocalPosition: {x: 2, y: 55, z: 212.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10169,7 +10169,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192688819}
-  m_LocalRotation: {x: -0.0000000015350228, y: 0.9839536, z: -0.1784248, w: -0.0000000084651415}
+  m_LocalRotation: {x: 0.0000000015350224, y: 0.9839536, z: -0.1784248, w: 0.00000000846514}
   m_LocalPosition: {x: 2, y: 55, z: 212.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11901,8 +11901,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: your progress in this sea will be lost
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 96aab97e4f22f6c41971b221dcd0c706, type: 2}
-  m_sharedMaterial: {fileID: 8860940889349979509, guid: 96aab97e4f22f6c41971b221dcd0c706, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 154b5ce30382de8408bf59e6e9b726b6, type: 2}
+  m_sharedMaterial: {fileID: 8860940889349979509, guid: 154b5ce30382de8408bf59e6e9b726b6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14076,8 +14076,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278190297
+  m_fontColor: {r: 0.8509804, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18134,8 +18134,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
