@@ -5238,6 +5238,7 @@ MonoBehaviour:
   collisionForce: 10
   invulnerableDuration: 2
   whirlpoolForce: 20
+  distanceModifier: 0
   distanceToTreasure: 30
   crashSource: {fileID: 0}
   hookSplash: {fileID: 0}
@@ -7574,8 +7575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a96571657815041a335916d530b0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completedLevel1: 1
-  completedLevel2: 1
+  completedLevel1: 0
+  completedLevel2: 0
   completedLevel3: 0
   maxLives: 3
   lives: 3
