@@ -2466,9 +2466,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "   Be careful in this deadly sea.\n\n    It is know that the Flying Dutchman
+  m_text: "   Be careful in this deadly sea.\n\n    It is known that the Flying Dutchman
     haunts these waters protecting its great treasure.\n\n   You have to find the
-    great treasure that is divided in three parts."
+    great treasure that is divided into three parts."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 154b5ce30382de8408bf59e6e9b726b6, type: 2}
   m_sharedMaterial: {fileID: 8860940889349979509, guid: 154b5ce30382de8408bf59e6e9b726b6, type: 2}
@@ -3754,8 +3754,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "   This sea is full of whirlpools that will affect your trajectory.\n\n   
-    The magnetic field that surrounds this sea will make your compass to point to
-    junk rocks too.\n\n   You have to find the unique treasure among the fake rocks."
+    The magnetic field that surrounds this sea will make your compass point to junk
+    rocks too.\n\n   You have to find the unique treasure among the fake rocks."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 154b5ce30382de8408bf59e6e9b726b6, type: 2}
   m_sharedMaterial: {fileID: 8860940889349979509, guid: 154b5ce30382de8408bf59e6e9b726b6, type: 2}
