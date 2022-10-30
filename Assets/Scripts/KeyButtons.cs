@@ -16,6 +16,9 @@ public class KeyButtons : MonoBehaviour
     [SerializeField] GameObject descriptionFrame;
     GameObject lastselect;
 
+    // [Header("Sound")]
+    // [SerializeField] AudioClip clickSound;
+
     void Start()
     {
         lastselect = new GameObject();
@@ -40,12 +43,14 @@ public class KeyButtons : MonoBehaviour
     }
 
     public void MenuBack(GameObject descriptionParent){
+        // AudioSource.PlayClipAtPoint(clickSound, GameObject.Find("Main Camera").GetComponent<Transform>().position);
         descriptionParent.SetActive(false);
         descriptionFrame.SetActive(false);
         EventSystem.current.SetSelectedGameObject(lastScreenBtn);
     }
 
     public void ButtonPressed(GameObject btn){
+        // AudioSource.PlayClipAtPoint(clickSound, GameObject.Find("Main Camera").GetComponent<Transform>().position);
         lastScreenBtn = btn;
     }
 
@@ -60,14 +65,17 @@ public class KeyButtons : MonoBehaviour
     }
 
     public void LoadLevel1(){
+        // AudioSource.PlayClipAtPoint(clickSound, GameObject.Find("Main Camera").GetComponent<Transform>().position);
         GameManager.instance.LoadLevel1();
     }
 
     public void LoadLevel2(){
+        // AudioSource.PlayClipAtPoint(clickSound, GameObject.Find("Main Camera").GetComponent<Transform>().position);
         GameManager.instance.LoadLevel2();
     }
 
     public void LoadLevel3(){
+        // AudioSource.PlayClipAtPoint(clickSound, GameObject.Find("Main Camera").GetComponent<Transform>().position);
         GameManager.instance.LoadLevel3();
     }
 
@@ -80,6 +88,7 @@ public class KeyButtons : MonoBehaviour
     }
 
     public void Quit(){
+        // AudioSource.PlayClipAtPoint(clickSound, GameObject.Find("Main Camera").GetComponent<Transform>().position);
         Application.Quit();
     }
 
