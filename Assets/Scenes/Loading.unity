@@ -1443,7 +1443,7 @@ MonoBehaviour:
   - You can pick up the treasure while is falling down if you are fast enough.
   - Did you know that the Red Sea is actually blue?
   boat: {fileID: 324098460}
-  boatRotationSpeed: 2
+  boatRotationSpeed: 60
   bar: {fileID: 2037413370}
   barFillingSpeed: 0.8
   sceneToLoad: FirstHook
