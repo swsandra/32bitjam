@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.zero;
             StartCoroutine(Death());
         }
-        if (Input.GetKeyDown(KeyCode.Space) && !dead) {
+        if (Input.GetAxis("Submit") > 0 && !dead) {
             GameObject nearestTreasure = treasures.OrderBy(t=> Vector3.Distance(transform.position, t.transform.position)).FirstOrDefault();
             if (Vector3.Distance(nearestTreasure.transform.position, transform.position) <= distanceToTreasure) {
                 rb.velocity = Vector3.zero;
